@@ -1,0 +1,11 @@
+{
+  "contest": 330,
+  "handle": "znBotty",
+  "crew": [
+    "Rolezn"
+  ],
+  "risk": "2",
+  "title": "Missing checks for whether the L2 Sequencer is active",
+  "issueId": 8,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/8"
+}
