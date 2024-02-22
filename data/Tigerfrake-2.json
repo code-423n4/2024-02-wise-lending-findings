@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Tigerfrake",
+  "risk": "3",
+  "title": "Contract Left Ownerless if Proposed Owner Fails to Claim Ownership Before Current Owner Renounces",
+  "issueId": 2,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/2"
+}
