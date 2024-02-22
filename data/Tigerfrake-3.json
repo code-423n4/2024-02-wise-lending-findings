@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Tigerfrake",
+  "risk": "2",
+  "title": "Lack of Access Control in approveMint() Function Allows Unauthorized Minting Approvals",
+  "issueId": 3,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/3"
+}
