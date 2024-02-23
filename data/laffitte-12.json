@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "laffitte",
+  "risk": "3",
+  "title": " Reentrancy Attack in SendValueHelper Contract",
+  "issueId": 12,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/12"
+}
