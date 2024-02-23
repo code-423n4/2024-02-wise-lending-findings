@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Tigerfrake",
+  "risk": "2",
+  "title": "Missing check for parametersLocked[_poolToken] in setPoolParameter allows for modifications of parameters associated with a specific _poolToken even if locked",
+  "issueId": 11,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/11"
+}
