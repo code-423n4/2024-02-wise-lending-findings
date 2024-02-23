@@ -1,36 +1,11 @@
-in CallOptionalReturn.sol , in function _callOptionalReturn:
 check token.code.length first before exec the call to save gas.
 
-org code :
-    function _callOptionalReturn(
-        address token,
-        bytes memory data
-    )
-        internal
-        returns (bool call)
-    {
-        (
-            bool success,
-            bytes memory returndata
-        ) = token.call(
-            data
-        );
+Lines of code:
+https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/CallOptionalReturn.sol#L12-L38
 
-        bool results = returndata.length == 0 || abi.decode(
-            returndata,
-            (bool)
-        );
-
-        if (success == false) {
-            revert();
-        }
-
-        call = success
-            && results
-            && token.code.length > 0;
-    }
 
 Gas Optimizations :
+
     function _callOptionalReturn(
         address token,
         bytes memory data
