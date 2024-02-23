@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "xiaohuanxiong_0311",
+  "risk": "3",
+  "title": "Precision Loss in withdrawExactAmount Function Leading to Temporary Fund Freezing and Operational Disruption",
+  "issueId": 15,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/15"
+}
