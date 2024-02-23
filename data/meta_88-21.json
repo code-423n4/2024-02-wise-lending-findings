@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "meta_88",
+  "risk": "3",
+  "title": "Inaccurate Asset Balance Due to Unvalidated Transfer Amounts in depositExactAmount Function",
+  "issueId": 21,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/21"
+}
