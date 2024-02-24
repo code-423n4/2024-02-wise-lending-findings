@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Satyam_Sharma",
+  "risk": "3",
+  "title": "During manually withdraw of shares _safeTransfer called twice which results in transfering withdrawAmount 2 times to msg.sender.",
+  "issueId": 24,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/24"
+}
