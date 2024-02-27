@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "t0x1c",
+  "risk": "3",
+  "title": "User's attempt to deposit reverts due to the calculation style inside `_calculateShares()`",
+  "issueId": 27,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/27"
+}
