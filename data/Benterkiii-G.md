@@ -6,9 +6,9 @@ variables that's been set in the constructor and remain unchanged throughout the
 https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLendingDeclaration.sol#L162
 
 
-# Checking earlier could save gas in case the function reverts 
+# Avoid Making any state reads if we can revert early (Save 2100 Gas) 
 
-##### 10 instances of this issue.
+##### 8 instances of this issue.
 ###### 4 instances in "PoolManager.setParamsLASA()" function:
 
 https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L48
@@ -39,20 +39,8 @@ https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c054
             PRECISION_FACTOR_E18
         );
 ```
-###### 6 instances in "WiseSecurityDeclarations._setLiquidationSettings()" function:
+###### 4 instances in "WiseSecurityDeclarations._setLiquidationSettings()" function:
 
-https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurityDeclarations.sol#L136
-```solidity
-        if (_baseRewardFarm > LIQUIDATION_INCENTIVE_POWERFARM_MAX) {
-            revert BaseRewardFarmTooHigh();
-        }
-```
-https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurityDeclarations.sol#L140
-```solidity
-        if (_baseRewardFarm < LIQUIDATION_INCENTIVE_MIN) {
-            revert BaseRewardFarmTooLow();
-        }
-```
 https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurityDeclarations.sol#L154
 ```solidity
         if (_newMaxFeeETH > maxFee) {
