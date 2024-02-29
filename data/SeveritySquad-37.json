@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "SeveritySquad",
+  "risk": "3",
+  "title": "User can reEnter to withdraw more than he deposited",
+  "issueId": 37,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/37"
+}
