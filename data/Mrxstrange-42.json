@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Mrxstrange",
+  "risk": "2",
+  "title": " Failed transfer with low level call won’t revert",
+  "issueId": 42,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/42"
+}
