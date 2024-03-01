@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "mitko1111",
+  "risk": "3",
+  "title": "Salt in PendlePowerFarmTokenFactory.clone can be predictable",
+  "issueId": 43,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/43"
+}
