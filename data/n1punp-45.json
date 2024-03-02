@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "n1punp",
+  "risk": "3",
+  "title": "`WiseOracleHub.latestResolver` can revert due to TWAP lagging behind, causing the oracle to always revert, which can lead to bad debt in blackswan events.",
+  "issueId": 45,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/45"
+}
