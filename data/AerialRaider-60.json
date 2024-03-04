@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "AerialRaider",
+  "risk": "2",
+  "title": "Division by Zero vulnerability in the MainHelper contract",
+  "issueId": 60,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/60"
+}
