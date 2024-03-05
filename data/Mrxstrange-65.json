@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Mrxstrange",
+  "risk": "2",
+  "title": "Indirect Access to _corePayback() Function Enables Unauthorised Exploitation",
+  "issueId": 65,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/65"
+}
