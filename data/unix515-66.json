@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "unix515",
+  "risk": "3",
+  "title": "Some user might be fallen in bad debt mode, since the liquidation logic can be called with the address and NFT Id that dosen't belong to single user.",
+  "issueId": 66,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/66"
+}
