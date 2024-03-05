@@ -115,3 +115,54 @@ function _checkReentrancy()
 -  function _sendingProgressAaveHub()  private view returns (bool)   { 
 -        return IAaveHubLite(AAVE_HUB_ADDRESS).sendingProgressAaveHub();
 -    }
+
+```
+
+##################################################################################
+
+## 3. Multiple accesses of a msg.value should use a local variable cache
+
+
+* Begin by verifying that msg.value is not equal to zero initially, as this precaution can result in significant gas savings. Additionally, there is no need to perform a check within the _validateNonZero(paybackShares) function.
+
+
+* https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLending.sol#L1088-L1155
+
+```
+function paybackExactAmountETH(
+        uint256 _nftId
+    )
+ ...
+    {
+...
++		require(msg.value != 0, "Empty value," )
++		uint256 senderAmount = msg.value;	
+
+        uint256 paybackShares = calculateBorrowShares(
+            {
+                _poolToken: WETH_ADDRESS,
+-                _amount: msg.value,
++              _amount: senderAmount,
+                _maxSharePrice: false
+            }
+        );
+
+-        _validateNonZero(
+-           paybackShares
+-        );
+
+-        uint256 requiredAmount = msg.value;
+
+-        if (msg.value > maxPaybackAmount) {
++        if (msg.value > senderAmount) {
+
+            unchecked {
+-                refundAmount = msg.value
++ 				 refundAmount = senderAmount
+                    - maxPaybackAmount;
+            }
+...
+...
+    }
+
+```
