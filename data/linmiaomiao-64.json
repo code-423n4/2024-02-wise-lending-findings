@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "linmiaomiao",
+  "risk": "2",
+  "title": "query price will be reverted if the decimals of the added chalink price feed decimals are greater than 18 and uniswapV3 pool added to verify",
+  "issueId": 64,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/64"
+}
