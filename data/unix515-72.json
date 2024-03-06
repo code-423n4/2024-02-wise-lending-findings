@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "unix515",
+  "risk": "3",
+  "title": "`CallOptionalReturn::_callOptionalReturn` function has not reverted when the low level call return false.",
+  "issueId": 72,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/72"
+}
