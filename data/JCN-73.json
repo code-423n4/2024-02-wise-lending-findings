@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "JCN",
+  "risk": "2",
+  "title": "Incorrect bad debt accounting can lead to a state where the `claimFeesBeneficial` function is permanently bricked and no new incentives can be distributed, potentially locking pending and future protocol fees in the `FeeManager` contract",
+  "issueId": 73,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/73"
+}
