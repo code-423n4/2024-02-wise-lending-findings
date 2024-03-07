@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "burhan_khaja",
+  "risk": "3",
+  "title": "Flawed calculation of ETH_USD_PLACEHOLDER address in WiseOracleHub's constructor  leads to denial of service and breaks all the functionality related to it",
+  "issueId": 77,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/77"
+}
