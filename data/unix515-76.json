@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "unix515",
+  "risk": "2",
+  "title": "On `PendlePowerFarmTokenFactory `, `_clone` function does not revert even if contract deployment is failed.",
+  "issueId": 76,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/76"
+}
