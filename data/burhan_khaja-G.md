@@ -40,18 +40,35 @@ Modifier [onlyProposed()](https://github.com/code-423n4/2024-02-wise-lending/blo
     }
 ```
 
-The Best Approach would be to remove the definition and implementation of onlyProposed() modifier and use the inline logic to minimize the contract code-size and deployment gas costs.
+The Best Approach would be to remove the definition and implementation of onlyProposed() modifier & _onlyProposed() function and use the inline logic to minimize the contract code-size and deployment gas costs.
 
 `Here is the fix: `
-
 ```
-    // also make sure to remove Lines 16-19
-    function claimOwnership()
-        external
-    {
-        _onlyProposed();
-        master = proposedMaster;
+// Remove lines 16-19
+
+ -   modifier onlyProposed() {
+ -      _onlyProposed();
+ -      _;
     }
+
+// Remove lines 37-46
+
+ -   function _onlyProposed() private view {
+ -       if (msg.sender == proposedMaster) {
+ -          return;
+ -       }
+ -      revert NotProposed();
+ -  }
+
+
+// Update lines 92 - 97
+
+ +   function claimOwnership()
+ +       external
+ +  {
+ +      if (msg.sender != proposedMaster) revert("unauth");
+ +      master = proposedMaster;
+ +  }
 
 ```
 
