@@ -2,7 +2,7 @@
 |--------|-------------------------------------------------------------------------
 | G-01   |Using bytes32 instead of string for strings with expected length < 32 bytes saves gas                                                                          
 | G-02   |Inlining onlyproposed modifier will save gas as it is used only once, (not in 4nalyser or bot-report)
-| 3      |                 
+| 3      |Making Admin Functions payable saves both execution and deployment gas costs ,without risking user experience
 | 4      |                                         
 | 5      |           
 | 6      |                                                                               
@@ -24,12 +24,7 @@ https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c054
 - string public name;
 + bytes32 public name;
 ```
-similarly,
-https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/DerivativeOracles/PtOracleDerivative.sol#L74
-
-https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PositionNFTs.sol#L14
-
-https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PowerFarmNFTs/PowerFarmNFTs.sol#L27
+similarly, [1](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/DerivativeOracles/PtOracleDerivative.sol#L74) [2](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PositionNFTs.sol#L14) [3](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PowerFarmNFTs/PowerFarmNFTs.sol#L27)
 
 ## G-02 - Inlining onlyproposed modifier will save gas as it is used only once, (not in 4nalyser or bot-report)
 
@@ -59,5 +54,43 @@ The Best Approach would be to remove the definition and implementation of onlyPr
     }
 
 ```
+
+## G-03 - Making Admin Functions payable saves both execution and deployment gas costs ,without risking user experience
+
+Non-payable functions have an implicit require(msg.value == 0) inserted in them.
+We can make admin specific functions payable to save gas, because the compiler won’t be checking the callvalue of the function.
+We could also define every function as payable but since inexperienced users can accidentally loose ethers.
+
+This Optimization technique will also make the contract smaller and cheaper to deploy as there will be fewer opcodes in the creation and runtime code.
+
+[EXAMPLE](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L125-L133)
+`Before fix`
+
+```
+    function setVerifiedIsolationPool(
+        address _isolationPool,
+        bool _state
+    )
+        external
+        onlyMaster
+    {
+        verifiedIsolationPool[_isolationPool] = _state;
+    }
+```
+`After Fix`
+```
+    function setVerifiedIsolationPool(
+        address _isolationPool,
+        bool _state
+    )
+        external
+        payable
+        onlyMaster
+    {
+        verifiedIsolationPool[_isolationPool] = _state;
+    }
+
+```
+Similarly, [1](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L34) [2](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L106) [3](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L139) [4](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L151)
 
                
