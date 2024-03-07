@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Matin",
+  "risk": "2",
+  "title": "Precision loss in the calculation of the fee amounts and fee shares inside the `_preparePool` function of the MainHelper contract",
+  "issueId": 79,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/79"
+}
