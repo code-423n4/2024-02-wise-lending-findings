@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Auditwolf",
+  "risk": "2",
+  "title": "Directly sent ETH will be stuck in PendlePowerManager.",
+  "issueId": 90,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/90"
+}
