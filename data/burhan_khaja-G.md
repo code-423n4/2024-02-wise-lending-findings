@@ -7,7 +7,9 @@
 | G-05   |Use fallback or receive instead of deposit functions when transferring native ether can save lot of gas           
 | G-06   |Deployment size can be reduced by optimizing the IPFS hash to have more zeros (or using the --no-cbor-metadata compiler option)                                                                               
 | G-07   |Using YUL's selfbalance is cheaper than address(this).balance                                                                                    
-| G-08   |Using assembly to revert with an error message is more gas-effective than custom errors   
+| G-08   |Using assembly to revert with an error message is more gas-effective than custom errors
+| G-09   |Calling functions via interface incurs memory expansion costs, so use assembly to re-use data already in memory
+| G-10   |Setters must check newValue != oldValue before writing to storage To save accidental gas costs, (not in 4nalyzer or bot-report)   
 
 
 ## G-01 - Using bytes32 instead of string for strings with expected length < 32 bytes saves gas
@@ -234,6 +236,52 @@ When reverting in solidity code, it is common practice to use a require or rever
 ```
 
 Similarly, [1](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/OwnableMaster.sol#L45) [2](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLowLevelHelper.sol#L22) [3](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLowLevelHelper.sol#L33) [4](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/FeeManager/FeeManager.sol#L366) [5](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/FeeManager/FeeManager.sol#L419) [6](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PositionNFTs.sol#L48) [7](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/MainHelper.sol#L245) [8](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/MainHelper.sol#L638) [9](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseCore.sol#L208) [10](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L37)
+
+## G-09 - Calling functions via interface incurs memory expansion costs, so use assembly to re-use data already in memory
+When calling a function on a contract B from another contract A, it’s most convenient to use the interface, create an instance of B with an address and call the function we wish to call. This works very well, but due to how solidity compiles our code, it stores the data to send to contract B in a new memory location thereby expanding memory, sometimes unnecessarily.
+
+
+With inline assembly, we can optimize our code better and save some gas by using previously used memory locations that we don’t need again.
+
+Instances => [1](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WrapperHub/AaveHub.sol#L626) [2](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLendingDeclaration.sol#L114-L116) [3](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseOracleHub/OracleHelper.sol#L25-L27) [4](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmController.sol#L186-L188) [5](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmController.sol#L190-L192)
+
+## G-10 - Setters must check newValue != oldValue before writing to storage To save accidental gas costs, (not in 4nalyzer or bot-report)
+
+If new value == oldvalue, You must revert because writing to storage costs lot of gas and reverting on no change will refund the gas back 
+
+[example](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmController.sol#L321-L332)
+```
+    function changeExchangeIncentive(
+        uint256 _newExchangeIncentive
+    )
+        external
+        onlyMaster
+    {
+        exchangeIncentive = _newExchangeIncentive;
+
+        emit ChangeExchangeIncentive(
+            _newExchangeIncentive
+        );
+    }
+```
+
+`Fix`
+```
+    function changeExchangeIncentive(
+        uint256 _newExchangeIncentive
+    )
+        external
+        onlyMaster
+    {
+        if (exchangeIncentive == _newExchangeIncentive) revert("Nothing_Changed!");
+        exchangeIncentive = _newExchangeIncentive;
+
+        emit ChangeExchangeIncentive(
+            _newExchangeIncentive
+        );
+    }
+```
+Similarly [1](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmController.sol#L334-L359) [2](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmController.sol#L321-L332) [3](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WrapperHub/AaveHub.sol#L44-L56) [4](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PositionNFTs.sol#L319-L326) [5](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PositionNFTs.sol#L328-L335) [6](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PowerFarmNFTs/PowerFarmNFTs.sol#L161-L168) [7](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PowerFarmNFTs/PowerFarmNFTs.sol#L170-L177)
 
 
 
