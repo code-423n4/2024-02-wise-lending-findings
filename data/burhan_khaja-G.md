@@ -2,12 +2,12 @@
 |--------|-------------------------------------------------------------------------
 | G-01   |Using bytes32 instead of string for strings with expected length < 32 bytes saves gas                                                                          
 | G-02   |Inlining onlyproposed modifier will save gas as it is used only once, (not in 4nalyser or bot-report)
-| 3      |Making Admin Functions payable saves both execution and deployment gas costs ,without risking user experience
-| 4      |Use assembly to check for 0 address, (instances not in 4nalyzer or bot-report)                                        
-| 5      |           
-| 6      |                                                                               
-| 7      |                                                                                    
-| 8      |   
+| G-03   |Making Admin Functions payable saves both execution and deployment gas costs ,without risking user experience
+| G-04   |Use assembly to check for 0 address, (instances not in 4nalyzer or bot-report)                                        
+| G-05   |Use fallback or receive instead of deposit functions when transferring native ether can save lot of gas           
+| G-06   |Deployment size can be reduced by optimizing the IPFS hash to have more zeros (or using the --no-cbor-metadata compiler option)                                                                               
+| G-07   |Using YUL's selfbalance is cheaper than address(this).balance                                                                                    
+| G-08   |Using assembly to revert with an error message is more gas-effective than custom errors   
 
 
 ## G-01 - Using bytes32 instead of string for strings with expected length < 32 bytes saves gas
@@ -138,6 +138,102 @@ assembly {
 ```
 
 Similarly, [1](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/OwnableMaster.sol#L76) [2](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PositionNFTs.sol#L77) [3](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurity.sol#L170) [4](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurity.sol#L201) [5](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurity.sol#L218) [6](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurityDeclarations.sol#L61) [7](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurityDeclarations.sol#L65) [8](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/FeeManager/DeclarationsFeeManager.sol#L45) [9](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/FeeManager/DeclarationsFeeManager.sol#L49) [10](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WrapperHub/Declarations.sol#L57) [11](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L174) [12](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/FeeManager/FeeManager.sol#L179) [13](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WrapperHub/AaveHub.sol#L670) [14](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PowerFarmNFTs/PowerFarmNFTs.sol#L57)
+
+## G-05 - Use fallback or receive instead of deposit functions when transferring native ether can save lot of gas
+
+In WiseLending contract, exporting the logic of depositExactAmountETH() && depositExactAmountETHMint() into receive() or fallback() function can save lot of gas.
+As the fallback function is capable of receiving bytes data which can be parsed with abi.decode to serve the alternative for the purpose of supplying arguments to depositExactAmountETH() && depositExactAmountETHMint()
+
+Instances => [1](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLending.sol#L388) [2](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLending.sol#L426)
+
+## G-06 - Deployment size can be reduced by optimizing the IPFS hash to have more zeros (or using the --no-cbor-metadata compiler option)
+
+The Solidity compiler appends 51 bytes of metadata to the actual smart contract code. Since each deployment byte costs 200 gas, removing them can take over 10,000 gas cost off of deployment.
+
+you can read more about it here : https://www.rareskills.io/post/solidity-metadata
+
+## G-07 - Using YUL's selfbalance is cheaper than address(this).balance 
+selfbalance() function from yul is the best gas-effective alternative for The solidity code address(this).balance
+Across the whole WiseLending codebase, there are only two instances of it that can be optimized to save lot of gas as they are being inherited by lot of functions
+
+[SendValueHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/TransferHub/SendValueHelper.sol#L18-L20)
+```
+ 18:       if (address(this).balance < _amount) {
+ 19:           revert AmountTooSmall();
+ 20:       }
+```
+
+`Fix: `
+```
+        uint256 contractBalance;
+        assembly {
+          contractBalance := selfbalance()
+        }
+        if (contractBalance < _amount) {
+            revert AmountTooSmall();
+        }
+```
+
+Similarly For [AaveHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WrapperHub/AaveHelper.sol#L202-L204)
+```
+202:        if (address(this).balance < _amount) {
+203:            revert InvalidValue();
+204:        }
+```
+
+`Fix: `
+```
+        uint256 contractBalance;
+        assembly {
+          contractBalance := selfbalance()
+        }
+        if (contractBalance < _amount) {
+            revert InvalidValue();
+        }
+```
+
+## G-08 - Using assembly to revert with an error message is more gas-effective than custom errors 
+
+When reverting in solidity code, it is common practice to use a require or revert statement to revert execution with an error message. As the common known optimization is to use custom errors but they can be further optimized by using assembly to revert with the error message.
+
+[Example](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/OwnableMaster.sol#L21-L30)
+```
+    function _onlyMaster()
+        private
+        view
+    {
+        if (msg.sender == master) {
+            return;
+        }
+
+        revert NotMaster();
+    }
+```
+`Fix`
+
+```
+    function _onlyMaster()
+        private
+        view
+    {
+        if (msg.sender == master) {
+            return;
+        }
+        
+        assembly {
+            // Store the string "NotMaster" in memory
+            mstore(0, 4e6f744d6173746572) // "NotMaster" in hex
+            mstore(32, 8) // Length of the string "NotMaster"
+
+            // Revert with the string "NotMaster"
+            // Revert with the data starting at memory position 0 for 32 bytes
+            revert(0, 32) 
+        }
+    }
+
+```
+
+Similarly, [1](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/OwnableMaster.sol#L45) [2](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLowLevelHelper.sol#L22) [3](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLowLevelHelper.sol#L33) [4](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/FeeManager/FeeManager.sol#L366) [5](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/FeeManager/FeeManager.sol#L419) [6](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PositionNFTs.sol#L48) [7](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/MainHelper.sol#L245) [8](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/MainHelper.sol#L638) [9](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseCore.sol#L208) [10](https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PoolManager.sol#L37)
 
 
 
