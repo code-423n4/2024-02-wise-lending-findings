@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Satyam_Sharma",
+  "risk": "2",
+  "title": "`totalPoolInShares` should checked inside `_validateNonZero`.",
+  "issueId": 104,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/104"
+}
