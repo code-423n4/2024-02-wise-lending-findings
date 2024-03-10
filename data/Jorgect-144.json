@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Jorgect",
+  "risk": "2",
+  "title": "Users can front-run liquidation and avoid get liquidate.",
+  "issueId": 144,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/144"
+}
