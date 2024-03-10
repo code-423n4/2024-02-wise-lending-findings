@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "nadin",
+  "risk": "2",
+  "title": "`UNISWAP_V3_FEE` is hardcoded which will lead to significant losses compared to optimal routing ",
+  "issueId": 143,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/143"
+}
