@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "WoolCentaur",
+  "risk": "2",
+  "title": "Incorrect calculation of lending shares in `_withdrawOrAllocateSharesLiquidation` can lead to revert and failure to liquidate",
+  "issueId": 116,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/116"
+}
