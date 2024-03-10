@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "saneryee",
+  "risk": "2",
+  "title": "Lack of Reentracy Guard in `_safeTransfer`, `safeTransferFrom`, and `safeApprove` with Low-level Call",
+  "issueId": 113,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/113"
+}
