@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "NentoR",
+  "risk": "2",
+  "title": "`PendlePowerFarmLeverageLogic` does not validate if  `ENTRY_ASSET != WETH_ADDRESS ` before performing swap",
+  "issueId": 129,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/129"
+}
