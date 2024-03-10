@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "NentoR",
+  "risk": "3",
+  "title": "Lack of slippage control in `PendlePowerFarmToken` and wrong projection of share prices due to missing sync in `preview` functions",
+  "issueId": 130,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/130"
+}
