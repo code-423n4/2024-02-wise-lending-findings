@@ -15,7 +15,27 @@
 
 The Wise Lending protocol is a decentralized liquidity market that enables users to supply crypto assets and earn a variable APY from borrowers. The protocol determines the borrow rate dynamically using the Lending Automated Scaling Algorithm (LASA), which takes into account the total lending share amount and its change over time.
 
-This report provides a comprehensive analysis of the Wise Lending protocol's smart contract codebase, focusing on architecture, code quality, centralization risks, mechanism review, and systemic risks. The analysis is based on the provided smart contract code and additional context from the project's gitbook and LASA whitepaper.
+## Contract Overview
+
+The Wise Lending protocol consists of several key contracts that work together to facilitate lending, borrowing, liquidations, and other essential operations.
+
+1. [**WiseLending**](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLending.sol): This is the central contract of the protocol, responsible for managing lending pools, user positions, and interactions with other components. It handles functions such as depositing, withdrawing, borrowing, and repaying assets. The contract also integrates with external protocols like Aave, Curve, and Pendle Finance to enhance capital efficiency and liquidity.
+
+2. [**WiseSecurity**](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurity.sol): The WiseSecurity contract is responsible for performing various security checks and validations related to user actions. It ensures that users meet the necessary criteria for withdrawing, borrowing, and collateralizing assets. The contract also handles liquidations of undercollateralized positions and implements the protocol's health factor system.
+
+3. [**FeeManager**](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/FeeManager.sol): The FeeManager contract manages the protocol's fee system and incentive structures. It calculates and distributes fees collected from lending and borrowing activities to the protocol's treasury, lenders, and ecosystem participants. The contract also handles the management of bad debt and tracks the protocol's overall financial health.
+
+4. [**WiseOracleHub**](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseOracleHub/WiseOracleHub.sol): The WiseOracleHub contract serves as the central hub for price feeds and oracle functionality. It aggregates price data from multiple sources, including Chainlink oracles and Uniswap V3 time-weighted average prices (TWAPs). The contract provides reliable and up-to-date price information for various assets, which is crucial for calculating collateral values, borrowing limits, and liquidation thresholds.
+
+5. [**PoolManager**](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PoolManager.sol): The PoolManager contract is responsible for managing the protocol's lending pools and implementing the Lending Automated Scaling Algorithm (LASA). LASA dynamically adjusts the borrow interest rates based on the utilization of each lending pool, aiming to optimize liquidity and minimize interest rate volatility.
+
+6. [**AaveHub**](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/AaveHub.sol): The AaveHub contract integrates the Wise Lending protocol with the Aave lending platform. It allows users to seamlessly interact with Aave's lending pools and earn additional yield on their supplied assets. The contract handles the deposit and withdrawal of assets to and from Aave, as well as the management of Aave's aTokens.
+
+7. **PowerFarms**: The PowerFarms contracts enable users to leverage their supplied assets and earn boosted yields through yield farming strategies. These contracts integrate with external protocols like Curve and Pendle Finance to provide additional liquidity and yield generation opportunities.
+
+These contracts work together to create a comprehensive lending and borrowing ecosystem within the Wise Lending protocol. They handle various aspects of the protocol's functionality, including asset management, security, fee distribution, price oracles, interest rate optimization, and integrations with external protocols.
+
+The Wise Lending protocol also incorporates a governance system, where WISE token holders can propose and vote on protocol upgrades, parameter changes, and other important decisions. The governance system ensures that the protocol remains decentralized and responsive to the needs of its community.
 
 ## Approach <a name="approach"></a>
 
