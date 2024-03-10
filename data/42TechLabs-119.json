@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "42TechLabs",
+  "risk": "2",
+  "title": "Potential Risks of Permission Expansion Due to isOwner Function Equivalence",
+  "issueId": 119,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/119"
+}
