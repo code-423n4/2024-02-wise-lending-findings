@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "nadin",
+  "risk": "2",
+  "title": "Incorrect `NORMALISATION_FACTOR` constant in `WiseLendingDeclaration.sol`",
+  "issueId": 141,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/141"
+}
