@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "NentoR",
+  "risk": "2",
+  "title": "Pendle Aura Balancer market can permanently DOS `PendlePowerFarmToken` when new reward assets get added",
+  "issueId": 124,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/124"
+}
