@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "bareli",
+  "risk": "2",
+  "title": "No check on return value for ' _callOptionalReturn'",
+  "issueId": 142,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/142"
+}
