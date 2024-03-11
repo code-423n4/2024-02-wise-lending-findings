@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "FastChecker",
+  "risk": "3",
+  "title": "The amount of ETH given to the user in `AaveHub.sol#borrowExactAmountETH` function is not accurate.",
+  "issueId": 223,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/223"
+}
