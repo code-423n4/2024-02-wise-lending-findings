@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xCiphky",
+  "risk": "2",
+  "title": "Incorrect calculation in liquidation receive amount",
+  "issueId": 158,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/158"
+}
