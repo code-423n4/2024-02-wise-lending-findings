@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "AM",
+  "risk": "2",
+  "title": "Receive functions does not forward funds to master address",
+  "issueId": 246,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/246"
+}
