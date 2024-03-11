@@ -1,6 +1,5 @@
 ## [L-1]: Return value of call validation is not checked.
 ## [L-2]: open external function which accepts calldata may open paths for manipulations.
-## [G-1]: Variables in PendlePowerFarmDeclarations not changed anywhere else should be immutable.
 
 
 ## [L-1]: Return value of call in various contracts is not checked.
@@ -118,7 +117,6 @@ Manual review
 1. Allow this function to be called by only trusted admins or users. 
 If this function is to be left open, the calldata should pass through necessary checks to ensure the right data has been passed in.
 
-## [G-1]: Variables in PendlePowerFarmDeclarations not changed anywhere else should be immutable.
 
 
 
