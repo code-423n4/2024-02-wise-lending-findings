@@ -35,7 +35,7 @@ As per the EIP-3156 Specs
 > To trust that the value of data is genuine, in addition to the check in point 1, it is recommended to verify that the initiator belongs to a group of trusted addresses. Trusting the lender and the initiator is enough to trust that the contents of data are genuine.
 
 
-In contracts function, it neither returns the hash nor checks that the initiator was from a verified source though it doesn't safety checks against the consequences it must adhere to EIP-3156, if it intends to use a flash loan.
+In the contracts function, it neither returns the hash nor checks that the initiator was from a verified source though it doesn't safety checks against the consequences it must adhere to EIP-3156, if it intends to use a flash loan.
 - https://eips.ethereum.org/EIPS/eip-3156
 
 
@@ -207,7 +207,7 @@ https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c054
 However, this  check is insufficient to determine if an address has existing code. According to EIP-1052 https://eips.ethereum.org/EIPS/eip-1052.
 > The EXTCODEHASH of an precompiled contract is either c5d246... or 0.
 
-# Info4 - Use a maths library when dealing with calculations.
+# Info3 - Use a maths library when dealing with calculations.
 Lots of raw maths calculations are used all over wise lending contracts, and maths in solidity can lead to certain behaviors like rounding and truncation.
 Sample :
 https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseOracleHub/OracleHelper.sol#L119C1-L129C6
@@ -225,14 +225,14 @@ https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c054
     }
 ```
 It is best to make use of a safeMaths or decimal library to ensure against rounding and truncation errors.
-# Info5 - Calculations using `PRECISION_FACTOR_YEAR` will not always be accurate.
+# Info4 - Calculations using `PRECISION_FACTOR_YEAR` will not always be accurate.
 The `PRECISION_FACTOR_YEAR` is a multiple of 1e18 and 365 days:
 https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmToken.sol#L59C1-L59C87
 ```solidity
 uint256 internal constant PRECISION_FACTOR_YEAR = PRECISION_FACTOR_E18 * ONE_YEAR;
 ```
 The issue here is that it is used in multiple calculations in the different contracts, however, it doesn't put to context Leap years and during such a period it could affect the calculations on the contracts as leap years come and go from time to time.
-# Info6 - Delete functions that you don't intend to use.
+# Info5 - Delete functions that you don't intend to use.
 There are functions that are specified to be deleted by the protocol however such functions haven't been deleted and might lead to issues in the future.
 Sample:
 https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseOracleHub/WiseOracleHub.sol#L95C1-L117C6
@@ -263,7 +263,7 @@ https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c054
     }
 ```
 # R1 - Rounding issues arise during shares and amount calculation in `PendlePowerFarmToken`.
-refactor the `previewAmountWithdrawShares()` to ensure tightly against precision loss, so the user gets a lesser amount transferred to them if the denominator is slightly bigger than the individual numerators.
+refactor the `previewAmountWithdrawShares()` to ensure tightly against precision loss, so the user doesn't get a lesser amount transferred to them if the denominator is slightly bigger than the individual numerators.
 https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmToken.sol#L465C1-L477C1
 ```solidity
    function previewAmountWithdrawShares(uint256 _shares, uint256 _underlyingLpAssetsCurrent)
