@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "burhan_khaja",
+  "risk": "3",
+  "title": "Missing access controls in mint functions allows anyone to create unlimited position nfts",
+  "issueId": 280,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/280"
+}
