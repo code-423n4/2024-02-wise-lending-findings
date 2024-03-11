@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "serial-coder",
+  "risk": "2",
+  "title": "Wrong `NORMALISATION_FACTOR` constant leads to the malfunctioning of the LASA algorithm",
+  "issueId": 249,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/249"
+}
