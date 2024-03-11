@@ -1,5 +1,42 @@
 
-# Wise Lending Advanced Analysis Report
+# *Wise Lending Advanced Analysis Report*
+
+| S.N | Topics                                                            |
+|--------|----------------------------------------------------------------|
+| 1      | **Introduction**                                               |
+|        |   - *Core Functionalities*                        |
+|        |   - *Potential Benefits*                          |
+|        |   - *What's Unique??*                             |
+| 2      | **Scope of Contracts**                                         |
+| 3      | **Codebase Analysis**                                          |
+|        |   - *Contract Overview*                                        |
+|        |   - *Key Mechanic & Approaches*                                |
+|        |   - *Codebase Quality Analysis*  [Table]                       |
+| 4      | **Architecture Diagrams**                                      |
+|        |   - *High-Level Overview*                                      |
+|        |   - *User Interaction with Wise Lending*                       |
+| 5      | **Contract Functionality Overview** [Table]                    |
+| 6      | **Approach Taken Reviewing the Codebase**                      |
+| 7      | **Wise Lending Workflow**  [Table]                             |
+| 8      | **Economic Model Analysis** [Table]                            |
+| 9      | **Roles & Permissions**   [Table]                              |
+| 10     | **Architecture Business Logic** [Table]                        |
+| 11     | **Risk Model Analysis**                                        |
+|        |   - *Centralization Risks*                                     |
+|        |   - *Systematic Risks*                                         |
+|        |   - *Technical Risks*                                          |
+|        |   - *Integration Risks*                                        |
+|        |   - *Weak Spots & Single Point of Failure*                     |
+| 12     | **Areas of Improvement**                                       |
+| 13     | **Ideas for Incorporation**                                    |
+| 14     | **Tips & Thoughts**                                            |
+| 15     | **Architectural Recommendations**                              |
+| 16     | **Learning and Insights**                                      |
+| 17     | **Conclusion**                                                 |
+| 18     | **Time Spent**                                                 |
+
+
+
 
 
 
@@ -23,19 +60,19 @@ This report provides a comprehensive analysis and evaluation of the Wise Lending
 
 This review covers various aspects of the codebase, including its architecture, design, and implementation details. By examining the contract structure, logic, and interactions, this report identifies potential areas of improvement and offers suggestions to enhance the codebase. The recommendations provided are based on best practices in Solidity development, gas optimization techniques, and security considerations, ensuring a more robust, secure, and efficient system.
 
-**Core Functionalities**
+1.1 **Core Functionalities**
 - **Smart Contract-powered Lending**: Wise Lending relies on smart contracts to automate loan origination, interest calculations, and collateralization. This fosters trust and transparency while minimizing the need for intermediaries.
 - **Variable APY**: The interest rate earned by suppliers fluctuates based on supply and demand for specific crypto assets. Higher demand for a particular asset translates to a potentially higher APY for suppliers.
 - **Collateralized Loans**: Borrowers deposit crypto assets as collateral to secure loans. The loan-to-value (LTV) ratio determines the maximum loan amount a borrower can access.
 - **Liquidity Pools**: Funds are pooled together, creating a more efficient system for matching borrowers and lenders.
 
-**Potential Benefits**
+1.2 **Potential Benefits**
 - **Higher Returns for Suppliers**: Compared to traditional savings accounts, Wise Lending offers the potential for significantly higher returns on deposited crypto assets.
 - **Improved Access to Capital**: Borrowers can access crypto loans without traditional credit checks, offering greater flexibility for individuals with limited credit history.
 - **Transparency and Immutability**: The use of blockchain technology ensures transparency in transactions and immutability of data, fostering trust within the platform.
 - **Frictionless Borrowing and Lending**: Smart contracts automate processes, streamlining loan origination and repayment.
 
-**Whats Unique??**
+1.3 **Whats Unique??**
 
 
 Here's what makes Wise Lending unique compared to other crypto lending platforms
@@ -350,8 +387,28 @@ AaveEvents is a contract that manages events for Aave.
 44 .  [ApprovalHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/ApprovalHelper.sol)
 ApprovalHelper is a contract that provides functionalities for approving the transfer of assets between contracts.
 
+### 3.2 key mechanic & Approaches 
 
-### 3.2  Codebase Quality Analysis 🛠️
+**Interfaces and Inheritance**: Many contracts inherit from interfaces, which define function prototypes, ensuring that specific methods are implemented. This promotes modularity and reusability.
+
+**Access Control**: Many contracts use Ownable or OwnableMaster for controlling ownership and access to specific functions, preventing unauthorized changes to the contract state.
+
+**Lending and Borrowing**: The core lending and borrowing functionalities are managed through WiseLendingDeclaration, WiseOracleHub, and AaveHub. These contracts interact with Aave protocol to provide lending and borrowing services.
+
+**Fee Management**: FeeManager and DeclarationsFeeManager are responsible for managing and distributing fees collected throughout the platform. FeeManagerHelper provides additional helper functions for the fee management process.
+
+**Security**: WiseSecurity and WiseSecurityDeclarations manage user security. Users can secure their positions by depositing collateral in these contracts.
+
+**Power Farming**: The platform facilitates power farming through various contracts: PendlePowerFarmController, PendlePowerFarmDeclarations, PendlePowerFarmLeverageLogic, PendlePowerFarmMathLogic, PendlePowerFarmControllerHelper, and PendlePowerFarmTokenFactory. These contracts aim to provide leverage farming opportunities for users.
+
+**Oracle Functionality**: Various oracle contracts, such as OracleHelper, PendleLpOracle, PendleChildLpOracle, PtOraclePure, and PtOracleDerivative provide pricing data for assets used in the platform, ensuring accurate calculations for lending, borrowing, and farming operations.
+
+**Low-Level Helper Functions**: Contracts such as WiseLowLevelHelper and WiseCore provide low-level helper functions used throughout the platform.
+
+**Transfer and Approval Helpers**: Various helper contracts, such as SendValueHelper, WrapperHelper, CallOptionalReturn, TransferHelper, ApprovalHelper, help manage token approvals and transfers.
+
+**Events**: Event tracking is used for monitoring and tracking relevant activities on the platform with contracts like FeeManagerEvents, AaveEvents, and AaveHub.
+### 3.3  Codebase Quality Analysis 🛠️
 
 | Aspect                              | Description                                                                                                    | Score (1-5) | Contracts Affected                                  |
 |-------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------------------|
@@ -930,6 +987,8 @@ Total Time Spent - 54 Hours
 | Performing High-Level Code Review                 | 20 hours   |
 | Analyzing Security and Correctness Properties     | 12 hours   |
 | Writing Report and Presentation                   | 8 hours    |
+
+
 
 
 
