@@ -126,10 +126,112 @@ https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c054
 Use TWAP rather than `uniSwap.solt0()`.
 
 
-# Info1 - `totalSupply()` is depreciated for curve pools.
-# Info2 - `extcodesize()` check against zero isn't safe.
-# Info3 - contracts that have been destroyed will pass the `token.code.length > 0` check.
+# Info1 - contracts that have been destroyed will pass the `token.code.length > 0` check.
+In `CallOptionalReturn.sol` the function used by the transfer helpers `_callOptionalReturn()` check that the token actual exist with the check `token.code.length > 0`
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/TransferHub/CallOptionalReturn.sol#L35C1-L38C6
+```solidity
+    function _callOptionalReturn(address token, bytes memory data) internal returns (bool call) {
+        (bool success, bytes memory returndata) = token.call(data);
+
+        bool results = returndata.length == 0 || abi.decode(returndata, (bool));
+
+        if (success == false) {
+            revert();
+        }
+
+        call = success && results && token.code.length > 0;//@audit
+    }
+```
+
+The issue here is that contracts that have been self-destroyed will pass that check, for example, Upgradeable tokens when the logic is transferred to another address, if the owner destroys the logic of the past contract, the check will still pass for such a call thereby and allowing a caller to perform malicious actions in the protocol.
+
+## POC 
+```solidity
+pragma solidity ^0.8.17;
+
+import "forge-std/Test.sol";
+import "forge-std/console.sol";
+
+contract ForloopTest is Test {
+
+    SelfDestructExample public self;
+    address payable me = payable(address(this));
+
+    function setUp() public {
+        self = new SelfDestructExample(me);
+    }
+
+    function testLoop(uint256 x) public {
+        assertEq(loop._toString(x), loop.toString(x));
+    }
+
+    function testContract() public {
+        bool check = activate();
+        console.log("here boolie", check);
+        self.destroyAndSend();
+        console.log("here boolie", check);
+    }
+
+    function activate() public returns (bool) {
+        address _self = address(self);
+        return _self.code.length > 0;
+    }
+}
+
+contract SelfDestructExample {
+    address payable public beneficiary;
+
+    constructor(address payable _beneficiary) {
+        beneficiary = _beneficiary;
+    }
+
+    function destroyAndSend() public {
+        require(msg.sender == beneficiary, "You are not the beneficiary");
+        selfdestruct(beneficiary);
+    }
+}
+```
+# Info2 - `extcodesize()` check against zero isn't always safe.
+In OracleHelper.sol the function `_checkFunctionExistence()` checks contract actual exists.
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseOracleHub/OracleHelper.sol#L68C1-L76C10
+```
+       assembly {
+            size := extcodesize(_tokenAggregator)
+        }
+
+        if (size == 0) {//@audit checks before the call
+            return false;
+        }
+
+```
+However, this  check is insufficient to determine if an address has existing code. According to EIP-1052 https://eips.ethereum.org/EIPS/eip-1052.
+> The EXTCODEHASH of an precompiled contract is either c5d246... or 0.
+
 # Info4 - Use a maths library when dealing with calculations.
+Lots of raw maths calculations are used all over wise lending contracts, and maths in solidity can lead to certain behaviors like rounding and truncation.
+Sample :
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseOracleHub/OracleHelper.sol#L119C1-L129C6
+```solidity
+    function latestResolverTwap(address _tokenAddress) public view returns (uint256) {
+        UniTwapPoolInfo memory uniTwapPoolInfoStruct = uniTwapPoolInfo[_tokenAddress];
+
+        if (uniTwapPoolInfoStruct.isUniPool == true) {
+            return _getTwapPrice(_tokenAddress, uniTwapPoolInfoStruct.oracle)
+                / 10 ** (_decimalsWETH - decimals(_tokenAddress));
+        }
+
+        return _getTwapDerivatePrice(_tokenAddress, uniTwapPoolInfoStruct)
+            / 10 ** (_decimalsWETH - decimals(_tokenAddress));
+    }
+```
+It is best to make use of a safeMaths or decimal library to ensure against rounding and truncation errors.
 # Info5 - Calculations using `PRECISION_FACTOR_YEAR` will not always be accurate.
+The `PRECISION_FACTOR_YEAR` is a multiple of 1e18 and 365 days:
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmToken.sol#L59C1-L59C87
+```solidity
+uint256 internal constant PRECISION_FACTOR_YEAR = PRECISION_FACTOR_E18 * ONE_YEAR;
+```
+The issue here is that it is used in multiple calculations in the different contracts, however, it doesn't put to context Leap years and during such a period it could affect the calculations on the contracts as leap years come and go from time to time.
 # Info6 - Delete functions that you don't intend to use.
+there 
 # R1 - Rounding issues arise during shares and amount calculation in `PendlePowerFarmToken`.
