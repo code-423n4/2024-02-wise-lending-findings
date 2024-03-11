@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "mansa11",
+  "risk": "3",
+  "title": "[H-3] Share's health factor not checked leading to wrong positions health state.",
+  "issueId": 244,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/244"
+}
