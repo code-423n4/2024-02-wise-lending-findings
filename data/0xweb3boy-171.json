@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xweb3boy",
+  "risk": "2",
+  "title": "Liquidation will DoS in case of tokens with blacklist properties",
+  "issueId": 171,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/171"
+}
