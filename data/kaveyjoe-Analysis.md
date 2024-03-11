@@ -43,7 +43,7 @@
 
 
 
-## 1 . Introduction🌟
+## 1. Introduction
 
  
 
@@ -62,19 +62,19 @@ This report provides a comprehensive analysis and evaluation of the Wise Lending
 
 This review covers various aspects of the codebase, including its architecture, design, and implementation details. By examining the contract structure, logic, and interactions, this report identifies potential areas of improvement and offers suggestions to enhance the codebase. The recommendations provided are based on best practices in Solidity development, gas optimization techniques, and security considerations, ensuring a more robust, secure, and efficient system.
 
-### 1.1 Core Functionalities
+- ### Core Functionalities
 - **Smart Contract-powered Lending**: Wise Lending relies on smart contracts to automate loan origination, interest calculations, and collateralization. This fosters trust and transparency while minimizing the need for intermediaries.
 - **Variable APY**: The interest rate earned by suppliers fluctuates based on supply and demand for specific crypto assets. Higher demand for a particular asset translates to a potentially higher APY for suppliers.
 - **Collateralized Loans**: Borrowers deposit crypto assets as collateral to secure loans. The loan-to-value (LTV) ratio determines the maximum loan amount a borrower can access.
 - **Liquidity Pools**: Funds are pooled together, creating a more efficient system for matching borrowers and lenders.
 
-### 1.2 Potential Benefits
+- ### Potential Benefits
 - **Higher Returns for Suppliers**: Compared to traditional savings accounts, Wise Lending offers the potential for significantly higher returns on deposited crypto assets.
 - **Improved Access to Capital**: Borrowers can access crypto loans without traditional credit checks, offering greater flexibility for individuals with limited credit history.
 - **Transparency and Immutability**: The use of blockchain technology ensures transparency in transactions and immutability of data, fostering trust within the platform.
 - **Frictionless Borrowing and Lending**: Smart contracts automate processes, streamlining loan origination and repayment.
 
-### 1.3 Whats Unique??
+- ### What's Unique??
 
 
 Here's what makes Wise Lending unique compared to other crypto lending platforms
@@ -95,7 +95,7 @@ Here's what makes Wise Lending unique compared to other crypto lending platforms
 
 
 
-## 2 .  scope Contracts 🔍
+## 2. Scope of Contracts
 
 1  . [WiseLending](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLending.sol)
 2  . [WiseSecurity]( https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurity.sol)
@@ -145,12 +145,10 @@ Here's what makes Wise Lending unique compared to other crypto lending platforms
 
 
 
-## 3 . Codebase Analysis 💻
+## 3. Codebase Analysis
 
 
-### 3.1 Contract overview 
-
-
+- ### Contract Overview
 
 1 . [WiseLending](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLending.sol)
 WiseLending is the main contract that acts as the interface between the user and the lending protocol. It has several key functionalities such as:
@@ -389,7 +387,7 @@ AaveEvents is a contract that manages events for Aave.
 44 .  [ApprovalHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/ApprovalHelper.sol)
 ApprovalHelper is a contract that provides functionalities for approving the transfer of assets between contracts.
 
-### 3.2 key mechanic & Approaches 
+- ### Key Mechanic & Approaches
 
 **Interfaces and Inheritance**: Many contracts inherit from interfaces, which define function prototypes, ensuring that specific methods are implemented. This promotes modularity and reusability.
 
@@ -410,7 +408,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 **Transfer and Approval Helpers**: Various helper contracts, such as SendValueHelper, WrapperHelper, CallOptionalReturn, TransferHelper, ApprovalHelper, help manage token approvals and transfers.
 
 **Events**: Event tracking is used for monitoring and tracking relevant activities on the platform with contracts like FeeManagerEvents, AaveEvents, and AaveHub.
-### 3.3  Codebase Quality Analysis 🛠️
+ - ### Codebase Quality Analysis [Table]
 
 | Aspect                              | Description                                                                                                    | Score (1-5) | Contracts Affected                                  |
 |-------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------------------|
@@ -429,9 +427,9 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 
 
 
-## 4 .  Architecture Diagrams 🏗️
+## 4. Architecture Diagrams
 
-### 4.1 . High-Level Overview
+- ### High-Level Overview
 
 
     +---------------------------------------------+
@@ -484,7 +482,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 
 
 
-### 4.2 .  User interaction with Wise Lending
+- ### User Interaction with Wise Lending
 
     +-----------------+                                    +------------------+
     |    User         |<---------------------------------->| Wise Lending     |
@@ -551,7 +549,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
     |                        WrapperHub & Aave                        |<------->|  PoolManager    |
     +------------------------------------------------------------------+         +------------------+
 
-## 5 .  Contract Functionality Overview 🔄
+## 5. Contract Functionality Overview [Table]
 | Contract Name              | Function Name        | State-Changing | Arguments                                                            | Returns             | Ideal or Actual |
 |----------------------------|----------------------|----------------|----------------------------------------------------------------------|---------------------|-----------------|
 | WiseLending                | enterMarket          | Yes            | market, underlying, amount, isLong, leverage, minCollateralRatio    | none                | Ideal           |
@@ -615,7 +613,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 
 
 
-## 6 . Approach Taken Reviewing the Codebase 📝
+## 6. Approach Taken Reviewing the Codebase
 
 
 
@@ -648,7 +646,7 @@ vii . Event tracking and emissions in FeeManagerEvents, AaveHelper, and Aave Hub
 
 By systematically reviewing each contract and its interactions with other contracts in the codebase, I can effectively identify potential vulnerabilities and recommend improvements to strengthen the security and efficiency of the Wise Lending Codebase.
 
-## 7 . Wise lending Workflow 
+## 7. Wise Lending Workflow [Table]
 
 
 | Contract                  | Core Functionality                             | Technical Characteristics                                                                                     | Importance                                           | Management                                                                    |
@@ -666,7 +664,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 8 . Economic Model Aalysis 💰
+## 8. Economic Model Analysis [Table]
 
 | Variable                  | Description                                                            | Economic Impact                                                                                               |
 |---------------------------|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -726,7 +724,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 9 . Roles & Permissions 👥
+## 9. Roles & Permissions [Table]
 
 
 | Contract                            | Role / Permission       | Description                                                   |
@@ -769,7 +767,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 10 . Architecture Business Logic 💼
+## 10. Architecture Business Logic [Table]
 
 
 | Component                        | Functionality                                             | Interactions                                                  |
@@ -816,10 +814,10 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 11 . Risk Model Analysis 📊
+## 11. Risk Model Analysis
 
 
-### 11.1 Centralization Risks
+- ### Centralization Risks
 
 - All contracts are owned by the OwnableMaster contract, which can potentially become a central point of control.
 - The WiseCore contract has a wxToken variable that can be modified by the contract owner, introducing a potential single point of failure.
@@ -827,26 +825,25 @@ By systematically reviewing each contract and its interactions with other contra
 - The PoolManager contract is responsible for managing pools and can potentially become a central point of control.
 - The PendlePowerFarmController contract allows the owner to add or remove vaults, which can lead to centralization if the owner has too much control over the system.
 
-### 11.2 Systematic Risks
+- ### Systematic Risks
 
 - The contracts rely on external sources such as Aave and Pendle, making them susceptible to potential issues in those systems.
 - The contracts use price feeds from oracles, which can introduce systematic risk if the oracles provide incorrect or manipulated data.
 - The WiseSecurity contract uses a fraction variable to determine the allocation of funds, which can introduce systematic risk if the value is not properly managed.
 - Liquidity risks might arise from impermanent loss in Aave and Pendle pools.
 
-### 11.3 Technical Risks
+- ### Technical Risks
 
 - There is no formal verification of the smart contracts, increasing the risk of undiscovered bugs and vulnerabilities.
 - The use of low-level functions such as .delegatecall() and .create2() can introduce technical risks and complexities.
 - The use of unchecked arithmetic operations can introduce technical risks, as overflows or underflows might not be properly handled.
 - The PendlePowerFarmMathLogic contract uses SafeMath library for arithmetic operations, but there are still some instances where arithmetic operations can cause issues if not handled correctly.
 
-### 11.4 Integration Risks
-
+- ### Integration Risks
 - The contracts rely on integration with other protocols like Aave and Pendle, making them susceptible to potential compatibility issues and bugs.
 - The PendlePowerFarmToken contract uses IERC20Upgradeable and IUniswapV2Pair interfaces, which can introduce integration risks if the interfaces are not properly implemented or maintained.
 
-### 11.5 Weak Spots & Single Point of Failure
+- ### Weak Spots & Single Point of Failure
 
 - The WiseLowLevelHelper contract provides low-level functionality, which can potentially become a single point of failure if not properly secured and tested.
 - The PendlePowerFarmTokenFactory contract is responsible for creating new power farm tokens, which can potentially become a single point of failure if not properly secured and tested.
@@ -854,7 +851,7 @@ By systematically reviewing each contract and its interactions with other contra
 - The OracleHelper contract retrieves and processes price feeds, which can potentially become a single point of failure if not properly secured and tested.
 - The MainHelper contract provides various helper functions, including createPool(), which can potentially become a single point of failure if not properly secured and tested.
 
-## 12 . Area of Improvemets 🎯
+## 12. Areas of Improvement
 
 - Use of calldata instead of memory for function parameters that are not modified. This can save gas by avoiding copying data.
 - Avoid internal function calls in loops and move the logic outside the loop whenever possible.
@@ -873,7 +870,7 @@ By systematically reviewing each contract and its interactions with other contra
 - Ensure that all contracts have proper initialization and termination mechanisms.
 - Consider using upgradeable contracts to allow for future changes.
 
-## 13 . What ideas can be incorporated?
+## 13. Ideas for Incorporation
 
 Incorporating the following ideas in the Wise Lending protocol can potentially add value and improve its overall functionality:
 
@@ -888,7 +885,7 @@ Incorporating the following ideas in the Wise Lending protocol can potentially a
 - Create loyalty programs to incentivize long-term engagement and reward loyal users with reduced fees, better interest rates, or other perks. This can translate to long-term user retention and market growth.
 - Implement interest rate swaps between lending pools with different risk profiles or assets, allowing users to swap fixed and variable interest rates, thereby hedging risks and catering to varying preferences.
 
-## 14 . Tips & Thoughts 💡
+## 14. Tips & Thoughts
 
 Check the contract's variable and function modifiers, especially onlyOwner, onlyPoolManager, and onlyWhitelisted. Ensure that these modifiers are used appropriately and that access control is properly implemented.
 
@@ -929,7 +926,7 @@ Consider the re-usability of the contract code. Identify any code that could be 
 
 
 
-## 15 .  Architectural Recommendations 🏛️ 
+## 15. Architectural Recommendations
 
 - The codebase is quite large and contains many contracts. It would be beneficial to organize the contracts into subdirectories based on their functionality, such as oracle, fee_manager, power_farm, security, and transfer_hub.
 - Consider creating interfaces for each contract, which would clearly specify their intended functionalities and help reduce the coupling between contracts.
@@ -952,7 +949,7 @@ Consider the re-usability of the contract code. Identify any code that could be 
 
 
 
-## 16 . Learning and insights 🧠
+## 16. Learning and Insights
 
 After reviewing the Wise Lending codebase, I gained several insights and learned a lot about Solidity development, smart contract security, and complex decentralized systems. Here are some of the key learnings and insights:
 
@@ -970,7 +967,7 @@ After reviewing the Wise Lending codebase, I gained several insights and learned
 - The codebase makes use of several libraries and tools that I wasn't previously familiar with, such as Chainlink's price feeds and OpenZeppelin's library. This has given me the opportunity to learn about these tools and how they can be used in Solidity development.
 - Reviewing the Wise Lending codebase has given me a deeper understanding of decentralized lending protocols and how they are implemented in Solidity. This knowledge can be applied to other DeFi projects and will be valuable in my future Solidity development endeavors.
 
- ## 17 . Conclusion ⭐
+ ## 17. Conclusion
 
 After reviewing the Wise Lending codebase, I have gained valuable insights into the design, implementation, and best practices of complex decentralized systems. The codebase demonstrates a clear understanding of the requirements, architectural choices, and security concerns involved in developing such a system. It is well-organized, modular, and makes effective use of inheritance, interfaces, and external libraries to promote reusability and maintainability.
 
@@ -978,7 +975,7 @@ Throughout the review, I identified areas for improvement and suggestions to fur
 
 In conclusion, the Wise Lending codebase provides a solid foundation for a decentralized lending protocol. It showcases good development practices, innovative solutions, and a deep understanding of the Solidity ecosystem. By incorporating the recommendations provided in this report, the codebase can be further optimized to ensure a more efficient, secure, and scalable system, ultimately delivering a better user experience and contributing effectively to the DeFi space.
 
-## 18 .  Time Spent ⏳
+## 18. Time Spent
 
 Total Time Spent - 54 Hours
 | Activity                                          | Time Spent |
@@ -989,6 +986,8 @@ Total Time Spent - 54 Hours
 | Performing High-Level Code Review                 | 20 hours   |
 | Analyzing Security and Correctness Properties     | 12 hours   |
 | Writing Report and Presentation                   | 8 hours    |
+
+
 
 
 
