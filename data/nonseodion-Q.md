@@ -75,7 +75,6 @@ When a user tries to deposit with `depositExactAmount()` in the PendlePowerFarmT
 
 If a new reward token is added the indexes of the reward tokens are overwritten to the current index. The old rewards earned before are lost here which is what the known issue talks about.
 
-When `_updateRewards()` is called, it redeems the rewards from the Pendle market but since the indexes have already been overwritten these rewards aren't recorded in the PendlePowerFarmController.
 
 **(PendlePowerFarmToken.sol#L81-L96)[https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmToken.sol#L81-L96]**
 ```solidity
@@ -95,6 +94,19 @@ When `_updateRewards()` is called, it redeems the rewards from the Pendle market
             )
         );
     }
+```
+
+When `_updateRewards()` is called, it redeems the rewards from the Pendle market but since the indexes have already been overwritten these rewards aren't recorded in the PendlePowerFarmController. It returns when it gets to the portion of `_calculateRewardsClaimedOutside()` in the snippet below
+
+**[]()**
+```
+            if (index == lastIndex[i]) {
+                rewardsOutsideArray[i] = 0;
+                unchecked {
+                    ++i;
+                }
+                continue;
+            }
 ```
 
 ## L-6: The function `maximumBorrowToken()` does not check `allowBorrow` to know if the token can be borrowed.
