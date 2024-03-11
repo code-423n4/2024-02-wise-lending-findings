@@ -3,41 +3,41 @@
 
 
 
-# Wise Lending Advanced Analysis Report
-
 | S.N | Topics                                                            |
-|--------|----------------------------------------------------------------|
-| 1      | [Introduction](#1-introduction)                                                |
-|        |   - [Core Functionalities](#core-functionalities)                        |
-|        |   - [Potential Benefits](#potential-benefits)                          |
-|        |   - [What's Unique??](#whats-unique)                             |
-| 2      | [Scope of Contracts](#2-scope-of-contracts)                                         |
-| 3      | [Codebase Analysis](#3-codebase-analysis)                                          |
-|        |   - [Contract Overview](#contract-overview)                                        |
-|        |   - [Key Mechanic & Approaches](#key-mechanic--approaches)                                |
-|        |   - [Codebase Quality Analysis](#codebase-quality-analysis)  [Table]                       |
-| 4      | [Architecture Diagrams](#4-architecture-diagrams)                                      |
-|        |   - [High-Level Overview](#high-level-overview)                                      |
-|        |   - [User Interaction with Wise Lending](#user-interaction-with-wise-lending)                       |
-| 5      | [Contract Functionality Overview](#5-contract-functionality-overview) [Table]                    |
-| 6      | [Approach Taken Reviewing the Codebase](#6-approach-taken-reviewing-the-codebase)                      |
-| 7      | [Wise Lending Workflow](#7-wise-lending-workflow)  [Table]                             |
-| 8      | [Economic Model Analysis](#8-economic-model-analysis) [Table]                           |
-| 9      | [Roles & Permissions](#9-roles--permissions)   [Table]                             |
-| 10     | [Architecture Business Logic](#10-architecture-business-logic) [Table]                       |
-| 11     | [Risk Model Analysis](#11-risk-model-analysis)                                        |
-|        |   - [Centralization Risks](#centralization-risks)                                     |
-|        |   - [Systematic Risks](#systematic-risks)                                         |
-|        |   - [Technical Risks](#technical-risks)                                          |
-|        |   - [Integration Risks](#integration-risks)                                        |
-|        |   - [Weak Spots & Single Point of Failure](#weak-spots--single-point-of-failure)                     |
-| 12     | [Areas of Improvement](#12-areas-of-improvement)                                       |
-| 13     | [Ideas for Incorporation](#13-ideas-for-incorporation)                                    |
-| 14     | [Tips & Thoughts](#14-tips--thoughts)                                            |
-| 15     | [Architectural Recommendations](#15-architectural-recommendations)                              |
-| 16     | [Learning and Insights](#16-learning-and-insights)                                      |
-| 17     | [Conclusion](#17-conclusion)                                                 |
-| 18     | [Time Spent](#18-time-spent)                                                 |
+|-----|-------------------------------------------------------------------|
+| 1   | [**Introduction**](#1-introduction)                               |
+|     |   - [*Core Functionalities*](#core-functionalities)              |
+|     |   - [*Potential Benefits*](#potential-benefits)                  |
+|     |   - [*What's Unique??*](#whats-unique)                           |
+| 2   | [**Scope of Contracts**](#2-scope-of-contracts)                   |
+| 3   | [**Codebase Analysis**](#3-codebase-analysis)                     |
+|     |   - [*Contract Overview*](#contract-overview)                    |
+|     |   - [*Key Mechanic & Approaches*](#key-mechanic--approaches)     |
+|     |   - [*Codebase Quality Analysis*](#codebase-quality-analysis)    |
+| 4   | [**Architecture Diagrams**](#4-architecture-diagrams)             |
+|     |   - [*High-Level Overview*](#high-level-overview)                |
+|     |   - [*User Interaction with Wise Lending*](#user-interaction-with-wise-lending) |
+| 5   | [**Contract Functionality Overview**](#5-contract-functionality-overview) |
+| 6   | [**Approach Taken Reviewing the Codebase**](#6-approach-taken-reviewing-the-codebase) |
+| 7   | [**Wise Lending Workflow**](#7-wise-lending-workflow)             |
+| 8   | [**Economic Model Analysis**](#8-economic-model-analysis)         |
+| 9   | [**Roles & Permissions**](#9-roles--permissions)                  |
+| 10  | [**Architecture Business Logic**](#10-architecture-business-logic)|
+| 11  | [**Risk Model Analysis**](#11-risk-model-analysis)                |
+|     |   - [*Centralization Risks*](#centralization-risks)              |
+|     |   - [*Systematic Risks*](#systematic-risks)                      |
+|     |   - [*Technical Risks*](#technical-risks)                        |
+|     |   - [*Integration Risks*](#integration-risks)                    |
+|     |   - [*Weak Spots & Single Point of Failure*](#weak-spots--single-point-of-failure) |
+| 12  | [**Areas of Improvement**](#12-areas-of-improvement)             |
+| 13  | [**Ideas for Incorporation**](#13-ideas-for-incorporation)       |
+| 14  | [**Tips & Thoughts**](#14-tips--thoughts)                        |
+| 15  | [**Architectural Recommendations**](#15-architectural-recommendations) |
+| 16  | [**Learning and Insights**](#16-learning-and-insights)            |
+| 17  | [**Conclusion**](#17-conclusion)                                  |
+| 18  | [**Time Spent**](#18-time-spent)                                  |
+
+
 
 
 
@@ -63,19 +63,19 @@ This report provides a comprehensive analysis and evaluation of the Wise Lending
 
 This review covers various aspects of the codebase, including its architecture, design, and implementation details. By examining the contract structure, logic, and interactions, this report identifies potential areas of improvement and offers suggestions to enhance the codebase. The recommendations provided are based on best practices in Solidity development, gas optimization techniques, and security considerations, ensuring a more robust, secure, and efficient system.
 
-- ### Core Functionalities
+### Core Functionalities
 - **Smart Contract-powered Lending**: Wise Lending relies on smart contracts to automate loan origination, interest calculations, and collateralization. This fosters trust and transparency while minimizing the need for intermediaries.
 - **Variable APY**: The interest rate earned by suppliers fluctuates based on supply and demand for specific crypto assets. Higher demand for a particular asset translates to a potentially higher APY for suppliers.
 - **Collateralized Loans**: Borrowers deposit crypto assets as collateral to secure loans. The loan-to-value (LTV) ratio determines the maximum loan amount a borrower can access.
 - **Liquidity Pools**: Funds are pooled together, creating a more efficient system for matching borrowers and lenders.
 
-- ### Potential Benefits
+### Potential Benefits
 - **Higher Returns for Suppliers**: Compared to traditional savings accounts, Wise Lending offers the potential for significantly higher returns on deposited crypto assets.
 - **Improved Access to Capital**: Borrowers can access crypto loans without traditional credit checks, offering greater flexibility for individuals with limited credit history.
 - **Transparency and Immutability**: The use of blockchain technology ensures transparency in transactions and immutability of data, fostering trust within the platform.
 - **Frictionless Borrowing and Lending**: Smart contracts automate processes, streamlining loan origination and repayment.
 
-- ### What's Unique??
+### What's Unique??
 
 
 Here's what makes Wise Lending unique compared to other crypto lending platforms
@@ -151,7 +151,7 @@ Here's what makes Wise Lending unique compared to other crypto lending platforms
 ## 3. Codebase Analysis
 
 
-- ### Contract Overview
+### Contract Overview
 
 1 . [WiseLending](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLending.sol)
 WiseLending is the main contract that acts as the interface between the user and the lending protocol. It has several key functionalities such as:
@@ -390,7 +390,7 @@ AaveEvents is a contract that manages events for Aave.
 44 .  [ApprovalHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/ApprovalHelper.sol)
 ApprovalHelper is a contract that provides functionalities for approving the transfer of assets between contracts.
 
-- ### Key Mechanic & Approaches
+### Key Mechanic & Approaches
 
 **Interfaces and Inheritance**: Many contracts inherit from interfaces, which define function prototypes, ensuring that specific methods are implemented. This promotes modularity and reusability.
 
@@ -411,7 +411,8 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 **Transfer and Approval Helpers**: Various helper contracts, such as SendValueHelper, WrapperHelper, CallOptionalReturn, TransferHelper, ApprovalHelper, help manage token approvals and transfers.
 
 **Events**: Event tracking is used for monitoring and tracking relevant activities on the platform with contracts like FeeManagerEvents, AaveEvents, and AaveHub.
- - ### Codebase Quality Analysis [Table]
+
+### Codebase Quality Analysis [Table]
 
 | Aspect                              | Description                                                                                                    | Score (1-5) | Contracts Affected                                  |
 |-------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------------------|
@@ -432,7 +433,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 
 ## 4. Architecture Diagrams
 
-- ### High-Level Overview
+### High-Level Overview
 
 
         +---------------------------------------------+
@@ -485,7 +486,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 
 
 
-- ### User Interaction with Wise Lending
+### User Interaction with Wise Lending
 
         +-----------------+                                    +------------------+
         |    User         |<---------------------------------->| Wise Lending     |
@@ -820,7 +821,7 @@ By systematically reviewing each contract and its interactions with other contra
 ## 11. Risk Model Analysis
 
 
-- ### Centralization Risks
+### Centralization Risks
 
 - All contracts are owned by the OwnableMaster contract, which can potentially become a central point of control.
 - The WiseCore contract has a wxToken variable that can be modified by the contract owner, introducing a potential single point of failure.
@@ -828,25 +829,25 @@ By systematically reviewing each contract and its interactions with other contra
 - The PoolManager contract is responsible for managing pools and can potentially become a central point of control.
 - The PendlePowerFarmController contract allows the owner to add or remove vaults, which can lead to centralization if the owner has too much control over the system.
 
-- ### Systematic Risks
+### Systematic Risks
 
 - The contracts rely on external sources such as Aave and Pendle, making them susceptible to potential issues in those systems.
 - The contracts use price feeds from oracles, which can introduce systematic risk if the oracles provide incorrect or manipulated data.
 - The WiseSecurity contract uses a fraction variable to determine the allocation of funds, which can introduce systematic risk if the value is not properly managed.
 - Liquidity risks might arise from impermanent loss in Aave and Pendle pools.
 
-- ### Technical Risks
+### Technical Risks
 
 - There is no formal verification of the smart contracts, increasing the risk of undiscovered bugs and vulnerabilities.
 - The use of low-level functions such as .delegatecall() and .create2() can introduce technical risks and complexities.
 - The use of unchecked arithmetic operations can introduce technical risks, as overflows or underflows might not be properly handled.
 - The PendlePowerFarmMathLogic contract uses SafeMath library for arithmetic operations, but there are still some instances where arithmetic operations can cause issues if not handled correctly.
 
-- ### Integration Risks
+### Integration Risks
 - The contracts rely on integration with other protocols like Aave and Pendle, making them susceptible to potential compatibility issues and bugs.
 - The PendlePowerFarmToken contract uses IERC20Upgradeable and IUniswapV2Pair interfaces, which can introduce integration risks if the interfaces are not properly implemented or maintained.
 
-- ### Weak Spots & Single Point of Failure
+### Weak Spots & Single Point of Failure
 
 - The WiseLowLevelHelper contract provides low-level functionality, which can potentially become a single point of failure if not properly secured and tested.
 - The PendlePowerFarmTokenFactory contract is responsible for creating new power farm tokens, which can potentially become a single point of failure if not properly secured and tested.
@@ -989,6 +990,8 @@ Total Time Spent - 54 Hours
 | Performing High-Level Code Review                 | 20 hours   |
 | Analyzing Security and Correctness Properties     | 12 hours   |
 | Writing Report and Presentation                   | 8 hours    |
+
+
 
 
 
