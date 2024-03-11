@@ -4,8 +4,7 @@
 
 
 
-
-## 1 . Introduction
+## 1 . Introduction🌟
 
  
 
@@ -14,14 +13,15 @@ Wise Lending is a decentralized finance (DeFi) platform that harnesses the power
 
 This report provides a comprehensive analysis and evaluation of the Wise Lending smart contract codebase. As a complex decentralized system, Wise Lending aims to enable secure and efficient decentralized lending, contributing to the rapidly growing DeFi (Decentralized Finance) landscape.
 
-This review covers various aspects of the codebase, including its architecture, design, and implementation details. By examining the contract structure, logic, and interactions, this report identifies potential areas of improvement and offers suggestions to enhance the codebase. The recommendations provided are based on best practices in Solidity development, gas optimization techniques, and security considerations, ensuring a more robust, secure, and efficient system.
+
 
 
 **Wise Lending positions itself as a decentralized liquidity marketplace for crypto assets. Users can participate in two primary ways:**
 
 - **Suppliers**: Deposit crypto holdings and earn interest through a variable Annual Percentage Yield (APY).
 - **Borrowers**: Access loans in various cryptocurrencies by leveraging their deposited assets as collateral.
-This report delves into Wise Lending..........
+
+This review covers various aspects of the codebase, including its architecture, design, and implementation details. By examining the contract structure, logic, and interactions, this report identifies potential areas of improvement and offers suggestions to enhance the codebase. The recommendations provided are based on best practices in Solidity development, gas optimization techniques, and security considerations, ensuring a more robust, secure, and efficient system.
 
 **Core Functionalities**
 - **Smart Contract-powered Lending**: Wise Lending relies on smart contracts to automate loan origination, interest calculations, and collateralization. This fosters trust and transparency while minimizing the need for intermediaries.
@@ -56,7 +56,7 @@ Here's what makes Wise Lending unique compared to other crypto lending platforms
 
 
 
-## 2 .  scope Contracts 
+## 2 .  scope Contracts 🔍
 
 1  . [WiseLending](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLending.sol)
 2  . [WiseSecurity]( https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurity.sol)
@@ -106,7 +106,7 @@ Here's what makes Wise Lending unique compared to other crypto lending platforms
 
 
 
-## 3 . Codebase Analysis 
+## 3 . Codebase Analysis 💻
 
 
 ### 3.1 Contract overview 
@@ -351,7 +351,7 @@ AaveEvents is a contract that manages events for Aave.
 ApprovalHelper is a contract that provides functionalities for approving the transfer of assets between contracts.
 
 
-### 3.2  Codebase Quality Analysis 
+### 3.2  Codebase Quality Analysis 🛠️
 
 | Aspect                              | Description                                                                                                    | Score (1-5) | Contracts Affected                                  |
 |-------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------------------|
@@ -370,7 +370,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 
 
 
-## 4 .  Architecture Diagram 
+## 4 .  Architecture Diagrams 🏗️
 
 ### 4.1 . High-Level Overview
 
@@ -492,9 +492,72 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
     |                        WrapperHub & Aave                        |<------->|  PoolManager    |
     +------------------------------------------------------------------+         +------------------+
 
+## 5 .  Contract Functionality Overview 🔄
+| Contract Name              | Function Name        | State-Changing | Arguments                                                            | Returns             | Ideal or Actual |
+|----------------------------|----------------------|----------------|----------------------------------------------------------------------|---------------------|-----------------|
+| WiseLending                | enterMarket          | Yes            | market, underlying, amount, isLong, leverage, minCollateralRatio    | none                | Ideal           |
+|                            | exitMarket           | Yes            | market, isLong, seizeAll                                            | none                | Ideal           |
+|                            | liquidate            | Yes            | market, user, position                                              | none                | Ideal           |
+| WiseSecurity               | authorizeOperator    | Yes            | operator, approved                                                  | none                | Ideal           |
+|                            | revokeOperator       | Yes            | operator, approved                                                  | none                | Ideal           |
+|                            | deposit              | Yes            | underlying, amount, user                                            | none                | Ideal           |
+|                            | withdraw             | Yes            | underlying, amount, user                                            | none                | Ideal           |
+| MainHelper                 | _getReserves         | No             | -                                                                    | (uint256, uint256)  | Ideal           |
+| WiseSecurityHelper         | deposit              | Yes            | underlying, amount, user                                            | none                | Ideal           |
+|                            | withdraw             | Yes            | underlying, amount, user                                            | none                | Ideal           |
+| PendlePowerFarmToken       | mint                 | Yes            | recipient, amount                                                   | none                | Ideal           |
+|                            | burn                 | Yes            | amount                                                               | none                | Ideal           |
+| FeeManager                 | transferFee          | Yes            | from, to, amount, fee                                               | none                | Ideal           |
+|                            | withdrawFee          | Yes            | recipient, amount, fee                                              | none                | Ideal           |
+| PendlePowerFarmLeverageLogic | _calculateLeverage | No             | -                                                                    | uint256             | Ideal           |
+| OracleHelper               | getDerivativePrice   | No             | derivativeAddress, resolutionBlockNumber                           | uint256             | Ideal           |
+| PendlePowerFarmController  | openPosition         | Yes            | market, underlying, amount, isLong, leverage, minCollateralRatio, user | Position memory   | Ideal           |
+|                            | increaseLeverage     | Yes            | market, position, newLeverage                                       | none                | Ideal           |
+|                            | decreaseLeverage     | Yes            | market, position, newLeverage                                       | none                | Ideal           |
+|                            | closePosition        | Yes            | market, position, user, seizeAll                                    | none                | Ideal           |
+| WiseCore                   | receive              | Yes            | data                                                                 | none                | Ideal           |
+| WiseLendingDeclaration     | -                    | -              | -                                                                    | -                   | N/A             |
+| WiseOracleHub              | registerDerivative   | Yes            | derivative, oracleAddress, maxDecimals                              | none                | Ideal           |
+| AaveHub                    | deposit              | Yes            | underlying, amount, user                                            | none                | Ideal           |
+|                            | withdraw             | Yes            | underlying, amount, user                                            | none                | Ideal           |
+| WiseLowLevelHelper         | transfer             | Yes            | to, value                                                            | bool                | Ideal           |
+| PendlePowerFarmDeclarations| -                    | -              | -                                                                    | -                   | N/A             |
+| PendlePowerFarmControllerBase | -                 | -              | -                                                                    | -                   | N/A             |
+| AaveHelper                 | -                    | -              | -                                                                    | -                   | N/A             |
+| PositionNFTs               | mintPositionNFT      | Yes            | position                                                             | none                | Ideal           |
+|                            | burnPositionNFT      | Yes            | positionId                                                           | none                | Ideal           |
+| WiseSecurityDeclarations   | -                    | -              | -                                                                    | -                   | N/A             |
+| PoolManager                | createPool           | Yes            | underlying, fee, feeComparator, descriptionHash                    | Pool memory         | Ideal           |
+| FeeManagerHelper           | -                    | -              | -                                                                    | -                   | N/A             |
+| PendlePowerFarmMathLogic   | -                    | -              | -                                                                    | -                   | N/A             |
+| DeclarationsFeeManager     | -                    | -              | -                                                                    | -                   | N/A             |
+| PendlePowerManager         | createPool           | Yes            | underlying, fee, feeComparator, fee                                 | Pool memory         | Ideal           |
+| PendlePowerFarmControllerHelper | -             | -              | -                                                                    | -                   | N/A             |
+| PendlePowerFarm            | -                    | -              | -                                                                    | -                   | N/A             |
+| PowerFarmNFTs              | -                    | -              | -                                                                    | -                   | N/A             |
+| MinterReserver             | -                    | -              | -                                                                    | -                   | N/A             |
+| PendleLpOracle             | -                    | -              | -                                                                    | -                   | N/A             |
+| Declarations               | -                    | -              | -                                                                    | -                   | N/A             |
+| PtOracleDerivative         | derivativePrice      | No             | derivativeAddress, blockNumber                                      | uint256             | Ideal           |
+| Declarations               | -                    | -              | -                                                                    | -                   | N/A             |
+| PtOraclePure               | purePrice            | No             | underlying                                                           | uint256             | Ideal           |
+| OwnableMaster              | transferOwnership    | Yes            | newOwner                                                             | none                | Ideal           |
+| PendlePowerFarmTokenFactory| createPendlePowerFarmToken | Yes    | underlying, fee, feeComparator, descriptionHash                   | PendlePowerFarmToken | Ideal           |
+| PendleChildLpOracle        | -                    | -              | -                                                                    | -                   | N/A             |
+| FeeManagerEvents           | -                    | -              | -                                                                    | -                   | N/A             |
+| CustomOracleSetup          | setCustomOracle      | Yes            | derivativeAddress, customOracleAddress                              | none                | Ideal           |
+| SendValueHelper            | sendValue            | Yes            | recipient, value, data                                              | bool                | Ideal           |
+| WrapperHelper              | -                    | -              | -                                                                    | -                   | N/A             |
+| CallOptionalReturn         | -                    | -              | -                                                                    | -                   | N/A             |
+| TransferHelper             | transfer             | Yes            | to, value                                                            | bool                | Ideal           |
+| AaveEvents                 | -                    | -              | -                                                                    | -                   | N/A             |
+| ApprovalHelper             | approve              | Yes            | spender, value, user                                                | none                | Ideal           |
 
 
-## 5 . Approach Taken Reviewing the Codebase 
+
+
+## 6 . Approach Taken Reviewing the Codebase 📝
+
 
 
 While reviewing Wise Lending codebase , I take a methodical and thorough approach to ensure that the code is secure, efficient, and adheres to best practices. Here is an overview of the approaches I take
@@ -526,7 +589,7 @@ vii . Event tracking and emissions in FeeManagerEvents, AaveHelper, and Aave Hub
 
 By systematically reviewing each contract and its interactions with other contracts in the codebase, I can effectively identify potential vulnerabilities and recommend improvements to strengthen the security and efficiency of the Wise Lending Codebase.
 
-## 6 . Wise lending Workflow 
+## 7 . Wise lending Workflow 
 
 
 | Contract                  | Core Functionality                             | Technical Characteristics                                                                                     | Importance                                           | Management                                                                    |
@@ -544,7 +607,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 7 . Economic Model Aalysis 
+## 8 . Economic Model Aalysis 💰
 
 | Variable                  | Description                                                            | Economic Impact                                                                                               |
 |---------------------------|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -604,7 +667,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 8 . Roles & Permissions
+## 9 . Roles & Permissions 👥
 
 
 | Contract                            | Role / Permission       | Description                                                   |
@@ -647,7 +710,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 9 . Architecture Business Logic 
+## 10 . Architecture Business Logic 💼
 
 
 | Component                        | Functionality                                             | Interactions                                                  |
@@ -694,10 +757,10 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 10 . Risk Model Analysis
+## 11 . Risk Model Analysis 📊
 
 
-10.1 **Centralization Risks**
+11.1 **Centralization Risks**
 
 - All contracts are owned by the OwnableMaster contract, which can potentially become a central point of control.
 - The WiseCore contract has a wxToken variable that can be modified by the contract owner, introducing a potential single point of failure.
@@ -705,26 +768,26 @@ By systematically reviewing each contract and its interactions with other contra
 - The PoolManager contract is responsible for managing pools and can potentially become a central point of control.
 - The PendlePowerFarmController contract allows the owner to add or remove vaults, which can lead to centralization if the owner has too much control over the system.
 
-10.2 **Systematic Risks**
+11.2 **Systematic Risks**
 
 - The contracts rely on external sources such as Aave and Pendle, making them susceptible to potential issues in those systems.
 - The contracts use price feeds from oracles, which can introduce systematic risk if the oracles provide incorrect or manipulated data.
 - The WiseSecurity contract uses a fraction variable to determine the allocation of funds, which can introduce systematic risk if the value is not properly managed.
 - Liquidity risks might arise from impermanent loss in Aave and Pendle pools.
 
-10.3 **Technical Risks**
+11.3 **Technical Risks**
 
 - There is no formal verification of the smart contracts, increasing the risk of undiscovered bugs and vulnerabilities.
 - The use of low-level functions such as .delegatecall() and .create2() can introduce technical risks and complexities.
 - The use of unchecked arithmetic operations can introduce technical risks, as overflows or underflows might not be properly handled.
 - The PendlePowerFarmMathLogic contract uses SafeMath library for arithmetic operations, but there are still some instances where arithmetic operations can cause issues if not handled correctly.
 
-10.4 **Integration Risks**
+11.4 **Integration Risks**
 
 - The contracts rely on integration with other protocols like Aave and Pendle, making them susceptible to potential compatibility issues and bugs.
 - The PendlePowerFarmToken contract uses IERC20Upgradeable and IUniswapV2Pair interfaces, which can introduce integration risks if the interfaces are not properly implemented or maintained.
 
-10.5 **Weak Spots & Single Point of Failure**
+11.5 **Weak Spots & Single Point of Failure**
 
 - The WiseLowLevelHelper contract provides low-level functionality, which can potentially become a single point of failure if not properly secured and tested.
 - The PendlePowerFarmTokenFactory contract is responsible for creating new power farm tokens, which can potentially become a single point of failure if not properly secured and tested.
@@ -732,7 +795,7 @@ By systematically reviewing each contract and its interactions with other contra
 - The OracleHelper contract retrieves and processes price feeds, which can potentially become a single point of failure if not properly secured and tested.
 - The MainHelper contract provides various helper functions, including createPool(), which can potentially become a single point of failure if not properly secured and tested.
 
-## 11 . Area of Improvemets 
+## 12 . Area of Improvemets 🎯
 
 - Use of calldata instead of memory for function parameters that are not modified. This can save gas by avoiding copying data.
 - Avoid internal function calls in loops and move the logic outside the loop whenever possible.
@@ -751,7 +814,7 @@ By systematically reviewing each contract and its interactions with other contra
 - Ensure that all contracts have proper initialization and termination mechanisms.
 - Consider using upgradeable contracts to allow for future changes.
 
-## 12 . What ideas can be incorporated?
+## 13 . What ideas can be incorporated?
 
 Incorporating the following ideas in the Wise Lending protocol can potentially add value and improve its overall functionality:
 
@@ -766,7 +829,7 @@ Incorporating the following ideas in the Wise Lending protocol can potentially a
 - Create loyalty programs to incentivize long-term engagement and reward loyal users with reduced fees, better interest rates, or other perks. This can translate to long-term user retention and market growth.
 - Implement interest rate swaps between lending pools with different risk profiles or assets, allowing users to swap fixed and variable interest rates, thereby hedging risks and catering to varying preferences.
 
-## 13 . Tips & Thoughts 
+## 14 . Tips & Thoughts 💡
 
 Check the contract's variable and function modifiers, especially onlyOwner, onlyPoolManager, and onlyWhitelisted. Ensure that these modifiers are used appropriately and that access control is properly implemented.
 
@@ -807,7 +870,7 @@ Consider the re-usability of the contract code. Identify any code that could be 
 
 
 
-## 14 .  Architectural Recommendations 
+## 15 .  Architectural Recommendations 🏛️ 
 
 - The codebase is quite large and contains many contracts. It would be beneficial to organize the contracts into subdirectories based on their functionality, such as oracle, fee_manager, power_farm, security, and transfer_hub.
 - Consider creating interfaces for each contract, which would clearly specify their intended functionalities and help reduce the coupling between contracts.
@@ -830,7 +893,7 @@ Consider the re-usability of the contract code. Identify any code that could be 
 
 
 
-## 15 . Learning and insights 
+## 16 . Learning and insights 🧠
 
 After reviewing the Wise Lending codebase, I gained several insights and learned a lot about Solidity development, smart contract security, and complex decentralized systems. Here are some of the key learnings and insights:
 
@@ -848,7 +911,7 @@ After reviewing the Wise Lending codebase, I gained several insights and learned
 - The codebase makes use of several libraries and tools that I wasn't previously familiar with, such as Chainlink's price feeds and OpenZeppelin's library. This has given me the opportunity to learn about these tools and how they can be used in Solidity development.
 - Reviewing the Wise Lending codebase has given me a deeper understanding of decentralized lending protocols and how they are implemented in Solidity. This knowledge can be applied to other DeFi projects and will be valuable in my future Solidity development endeavors.
 
- ## 16 . Conclusion 
+ ## 17 . Conclusion ⭐
 
 After reviewing the Wise Lending codebase, I have gained valuable insights into the design, implementation, and best practices of complex decentralized systems. The codebase demonstrates a clear understanding of the requirements, architectural choices, and security concerns involved in developing such a system. It is well-organized, modular, and makes effective use of inheritance, interfaces, and external libraries to promote reusability and maintainability.
 
@@ -856,7 +919,7 @@ Throughout the review, I identified areas for improvement and suggestions to fur
 
 In conclusion, the Wise Lending codebase provides a solid foundation for a decentralized lending protocol. It showcases good development practices, innovative solutions, and a deep understanding of the Solidity ecosystem. By incorporating the recommendations provided in this report, the codebase can be further optimized to ensure a more efficient, secure, and scalable system, ultimately delivering a better user experience and contributing effectively to the DeFi space.
 
-## 17 .  Time Spent 
+## 18 .  Time Spent ⏳
 
 Total Time Spent - 54 Hours
 | Activity                                          | Time Spent |
@@ -867,6 +930,8 @@ Total Time Spent - 54 Hours
 | Performing High-Level Code Review                 | 20 hours   |
 | Analyzing Security and Correctness Properties     | 12 hours   |
 | Writing Report and Presentation                   | 8 hours    |
+
+
 
 
 
