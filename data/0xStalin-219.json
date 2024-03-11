@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xStalin",
+  "risk": "3",
+  "title": "When liquidating positions with bad debt, reporting the bad debt to the FeeManagar can artificially inflate the totalBadDebtETH causing an incorrect accounting and making impossible to take down the totalBadDebtETH to 0",
+  "issueId": 219,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/219"
+}
