@@ -251,7 +251,7 @@ All important functions have proper access controls minimising the third party s
 | --- | --- |
 | High | 0 |
 | Medium | 5 |
-| Low/NC | 10 |
+| Low/NC | 7 |
 
 Most of the findings were identified in the `WiseLending` and `PendlePowerFarm`.
 
@@ -278,6 +278,8 @@ In general, `WiseLending` protocol presents a well-designed but a bit overengine
 Main code recommendations include simplifying redundant functions, if-statements rework, and extracting redundant state variables, holding same addresses.
 
 It is also highly recommended that the team continues to invest in security measures such as mitigation reviews, audits, and bug bounty programs to maintain the security and reliability of the project.
+
+
 
 ### Time spent:
 70 hours
