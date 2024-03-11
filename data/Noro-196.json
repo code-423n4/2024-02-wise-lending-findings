@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Noro",
+  "risk": "2",
+  "title": "Validity checks in `OracleHelper#_validateAnswer` are not sufficient and the function can return a stale price",
+  "issueId": 196,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/196"
+}
