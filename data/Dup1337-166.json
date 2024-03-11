@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Dup1337",
+  "risk": "2",
+  "title": "PendlePowerManager and AaveHUb don´t forward the received ETH to the master address as intended",
+  "issueId": 166,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/166"
+}
