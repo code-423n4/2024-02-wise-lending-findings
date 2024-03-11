@@ -233,5 +233,45 @@ uint256 internal constant PRECISION_FACTOR_YEAR = PRECISION_FACTOR_E18 * ONE_YEA
 ```
 The issue here is that it is used in multiple calculations in the different contracts, however, it doesn't put to context Leap years and during such a period it could affect the calculations on the contracts as leap years come and go from time to time.
 # Info6 - Delete functions that you don't intend to use.
-there 
+There are functions that are specified to be deleted by the protocol however such functions haven't been deleted and might lead to issues in the future.
+Sample:
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseOracleHub/WiseOracleHub.sol#L95C1-L117C6
+```solidity
+
+    // @TODO: Delete later, keep for backward compatibility //@audit
+    function getTokensInUSD(address _tokenAddress, uint256 _tokenAmount) external view returns (uint256) {
+        uint8 tokenDecimals = _tokenDecimals[_tokenAddress];
+
+        return _decimalsETH < tokenDecimals
+            ? _tokenAmount * latestResolver(_tokenAddress) / 10 ** decimals(_tokenAddress)
+                / 10 ** (tokenDecimals - _decimalsETH)
+            : _tokenAmount * 10 ** (_decimalsETH - tokenDecimals) * latestResolver(_tokenAddress)
+                / 10 ** decimals(_tokenAddress);
+    }
+```
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseOracleHub/WiseOracleHub.sol#L170C1-L192C6
+```solidity
+   // @TODO: Delete later, keep for backward compatibility//@audit
+    function getTokensFromUSD(address _tokenAddress, uint256 _usdValue) external view returns (uint256) {
+        uint8 tokenDecimals = _tokenDecimals[_tokenAddress];
+
+        return _decimalsETH < tokenDecimals
+            ? _usdValue * 10 ** (tokenDecimals - _decimalsETH) * 10 ** decimals(_tokenAddress)
+                / latestResolver(_tokenAddress)
+            : _usdValue * 10 ** decimals(_tokenAddress) / latestResolver(_tokenAddress)
+                / 10 ** (_decimalsETH - tokenDecimals);
+    }
+```
 # R1 - Rounding issues arise during shares and amount calculation in `PendlePowerFarmToken`.
+refactor the `previewAmountWithdrawShares()` to ensure tightly against precision loss, so the user gets a lesser amount transferred to them if the denominator is slightly bigger than the individual numerators.
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmToken.sol#L465C1-L477C1
+```solidity
+   function previewAmountWithdrawShares(uint256 _shares, uint256 _underlyingLpAssetsCurrent)
+        public
+        view
+        returns (uint256)
+    {
+        return (_shares * ((_underlyingLpAssetsCurrent * 1e18) / totalSupply())) / 1e18;
+    }
+```
+
