@@ -22,3 +22,25 @@ https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c054
             + PRECISION_FACTOR_E18;
     }
 ```
+## [L-02] The setLiquidationSettings method does not have an emit event after changing the configuration.
+Sending a notification allows programs that are concerned about the configuration of the program to be notified and updated when the protocol configuration is changed. It is recommended to send a notification(emit event) after modifying the protocol configuration
+
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseSecurity/WiseSecurity.sol#L85-L100
+```solidity
+    function setLiquidationSettings(
+        uint256 _baseReward,
+        uint256 _baseRewardFarm,
+        uint256 _newMaxFeeETH,
+        uint256 _newMaxFeeFarmETH
+    )
+        external
+        onlyMaster
+    {
+        _setLiquidationSettings(
+            _baseReward,
+            _baseRewardFarm,
+            _newMaxFeeETH,
+            _newMaxFeeFarmETH
+        );
+    }
+```
