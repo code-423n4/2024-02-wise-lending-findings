@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "AM",
+  "risk": "2",
+  "title": "Operations could be blocked as they are calculated based on block timestamp and on arbitrum 2 blocks can have the same timestamp",
+  "issueId": 259,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/259"
+}
