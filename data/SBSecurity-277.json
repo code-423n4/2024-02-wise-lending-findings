@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "SBSecurity",
+  "risk": "2",
+  "title": "Small positions will not pose incentive to be liquidated bringing `poolMarkets` down",
+  "issueId": 277,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/277"
+}
