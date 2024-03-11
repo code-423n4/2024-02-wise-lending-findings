@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "serial-coder",
+  "risk": "2",
+  "title": "The protocol allows borrowing small positions that can create bad debt",
+  "issueId": 255,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/255"
+}
