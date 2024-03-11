@@ -17,12 +17,10 @@ One function depends on lot of other functions  which in itself depends on other
 
 To Demonstrate the complexity of your codebase, examine this syncpool() modifier call graph
 
-///// callgraph
+https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c05497e5ccfd9488b5e2/contracts/WiseLending.sol#L97
 
-///// callgraph
+![Image Description](https://raw.githubusercontent.com/burhankhaja/PICS/main/syncpool.png)
 
-
-/// callgraph
 
 And This complexity gets even worse in other functions. My feedback is refactor codebase to make it more simpler and easier.
 `What would be the benefits of it?`
@@ -33,9 +31,22 @@ And This complexity gets even worse in other functions. My feedback is refactor 
 - Less Gas costs
 
 ## State Changes in modifiers
-Taking the same example of syncpool(), lot of state changes happen inside this modifier, which violates the principles of object oriented programming.
+Taking the same above example of syncpool(), lot of state changes happen inside this modifier, which violates the principles of object oriented programming.
+```
+ {
+        lendingPoolData[_poolToken].totalDepositShares += _amount;
+ }
+```
 
-// CODE EXAMPLES OF STATE CHANGES BY SYNCPOOL
+```
+ {
+        userLendingData[_nftId][_poolToken].shares += _shares;
+ }
+```
+
+etc .... etc ....
+
+
 
 Doing State changes in modifiers is considered bad software engineering practice  for several reasons, primarily revolving around the principles of encapsulation, maintainability, and the potential for introducing bugs or security vulnerabilities.
 
@@ -105,7 +116,7 @@ In my opinion, Certora is no doubt the best in industry for formal verification.
 
 
 ## Centralization Risks
-`onlyMaster()` modifier, highlight a critical aspect of smart contract security and governance. This modifier, serving as a single point of failure, poses a significant risk to the protocol's decentralization and overall security.
+`onlyMaster()` modifier and lot of similar admin modifiers, highlight a critical aspect of smart contract security and governance. These modifier, serving as a single point of failure, poses a significant risk to the protocol's decentralization and overall security.
 
 The centralization of control in a single entity or role within a smart contract can lead to several adverse outcomes, including:
 
@@ -123,7 +134,7 @@ Implementing governance can involve various strategies, such as:
   
 - `Delegation:` Allowing token holders to delegate their voting power to others can facilitate more informed decision-making and encourage participation from those who may not have the time or resources to vote themselves.
 
-By adopting governance mechanisms, WiseLending can enhance its security, trustworthiness, and alignment with the principles of decentralization. This approach not only mitigates the centralization risks associated with the onlyMaster() modifier but also fosters a more robust and resilient ecosystem for its users and stakeholders
+By adopting governance mechanisms, WiseLending can enhance its security, trustworthiness, and alignment with the principles of decentralization. This approach not only mitigates the centralization risks associated with the admin modifier but also fosters a more robust and resilient ecosystem for its users and stakeholders
 
 ## Summary Of Recommendations
 Here are the final list of recommendations from my analysis report:
@@ -131,10 +142,13 @@ Here are the final list of recommendations from my analysis report:
 - Avoid state changes in modifiers
 - Optimize gas-costs, conduct thorough gas audit
 - Ensure robustness of external dependencies like positionnft and wisesecurity contracts
+- Address all the compilation issues, especially in PositionNFT.sol and WiseOracleHub.sol 
 - Conduct thorough unit and fuzz test
 - Conduct Formal verfication audit with certora
 - Implement governance mechanisms to ensure proper decentralization and avoid single point of failure.
   
+
+
 
 ### Time spent:
 17 hours
