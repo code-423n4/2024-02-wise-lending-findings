@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "AM",
+  "risk": "3",
+  "title": "Liquidations could be blocked by a malicious user as it could do other liquidations in his name to create  positons token data on his/other users nfts.",
+  "issueId": 250,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/250"
+}
