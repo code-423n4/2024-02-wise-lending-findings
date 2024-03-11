@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xStalin",
+  "risk": "3",
+  "title": "PowerFarm positions that borrowed aWETH to enter the farm can't be liquidated.",
+  "issueId": 220,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/220"
+}
