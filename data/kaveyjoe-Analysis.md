@@ -412,7 +412,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 
 **Events**: Event tracking is used for monitoring and tracking relevant activities on the platform with contracts like FeeManagerEvents, AaveEvents, and AaveHub.
 
-### Codebase Quality Analysis [Table]
+### Codebase Quality Analysis
 
 | Aspect                              | Description                                                                                                    | Score (1-5) | Contracts Affected                                  |
 |-------------------------------------|----------------------------------------------------------------------------------------------------------------|-------------|-----------------------------------------------------|
@@ -553,7 +553,7 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
         |                        WrapperHub & Aave                        |<------->|  PoolManager    |
         +------------------------------------------------------------------+         +------------------+
 
-## 5. Contract Functionality Overview [Table]
+## 5. Contract Functionality Overview
 | Contract Name              | Function Name        | State-Changing | Arguments                                                            | Returns             | Ideal or Actual |
 |----------------------------|----------------------|----------------|----------------------------------------------------------------------|---------------------|-----------------|
 | WiseLending                | enterMarket          | Yes            | market, underlying, amount, isLong, leverage, minCollateralRatio    | none                | Ideal           |
@@ -650,7 +650,7 @@ vii . Event tracking and emissions in FeeManagerEvents, AaveHelper, and Aave Hub
 
 By systematically reviewing each contract and its interactions with other contracts in the codebase, I can effectively identify potential vulnerabilities and recommend improvements to strengthen the security and efficiency of the Wise Lending Codebase.
 
-## 7. Wise Lending Workflow [Table]
+## 7. Wise Lending Workflow
 
 
 | Contract                  | Core Functionality                             | Technical Characteristics                                                                                     | Importance                                           | Management                                                                    |
@@ -668,7 +668,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 8. Economic Model Analysis [Table]
+## 8. Economic Model Analysis
 
 | Variable                  | Description                                                            | Economic Impact                                                                                               |
 |---------------------------|------------------------------------------------------------------------|---------------------------------------------------------------------------------------------------------------|
@@ -728,7 +728,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 9. Roles & Permissions [Table]
+## 9. Roles & Permissions
 
 
 | Contract                            | Role / Permission       | Description                                                   |
@@ -771,7 +771,7 @@ By systematically reviewing each contract and its interactions with other contra
 
 
 
-## 10. Architecture Business Logic [Table]
+## 10. Architecture Business Logic
 
 
 | Component                        | Functionality                                             | Interactions                                                  |
@@ -990,6 +990,8 @@ Total Time Spent - 54 Hours
 | Performing High-Level Code Review                 | 20 hours   |
 | Analyzing Security and Correctness Properties     | 12 hours   |
 | Writing Report and Presentation                   | 8 hours    |
+
+
 
 
 
