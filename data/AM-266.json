@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "AM",
+  "risk": "2",
+  "title": "The calls in Curve finance pools are done in an unsafe manner",
+  "issueId": 266,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/266"
+}
