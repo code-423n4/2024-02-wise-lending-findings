@@ -301,5 +301,7 @@ Throughout the audit of the wiseLending protocol, several insights and learnings
 This audit not only provided a deep dive into the wiseLending protocol's workings but also offered broader insights into the state of DeFi development, security practices, and the potential for NFTs in financial contexts.
 
 
+**NOTE: I do not track time when auditing or writing report, so the time I selected is just a number**
+
 ### Time spent:
 5 hours
