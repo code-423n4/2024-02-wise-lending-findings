@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "FastChecker",
+  "risk": "3",
+  "title": "`OracleHelper.sol#_validateAnswer` function may not return the exact price of the token.",
+  "issueId": 222,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/222"
+}
