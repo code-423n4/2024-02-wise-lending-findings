@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xCiphky",
+  "risk": "2",
+  "title": "No slippage protection on LP token deposits for early users",
+  "issueId": 211,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/211"
+}
