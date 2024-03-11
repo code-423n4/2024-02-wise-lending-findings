@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "SBSecurity",
+  "risk": "2",
+  "title": "`PendlePowerFarmToken::syncSupply` modifier can lead to total DOS of the contract",
+  "issueId": 274,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/274"
+}
