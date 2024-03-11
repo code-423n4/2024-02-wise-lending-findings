@@ -17,7 +17,7 @@
 - [G-07] [Remove unused immutable/constant variables](#g-07-remove-unused-immutableconstant-variables)
 - [G-08] [Refactor `PtOracleDerivative::latestAnswer` function to fail early saves 2 external call](#g-08-refactor-ptoraclederivativelatestanswer-function-to-fail-early-saves-2-external-call)
 - [G-09] [Refactor `PtOraclePure::latestAnswer` function to fail early saves 1 external call](#g-09-refactor-ptoraclepurelatestanswer-function-to-fail-early-saves-1-external-call)
-- [G-10] [Use above assigned to state variable values directly instead of reading them from storage saves SLOADs](#g-10-use-above-assigned-to-state-variable-values-directly-instead-of-reading-them-from-storage-saves-sloads)
+- [G-10] [Use above assigned to state variable values directly instead of reading them from storage saves 2 SLOADs](#g-10-use-above-assigned-to-state-variable-values-directly-instead-of-reading-them-from-storage-saves-2sloads)
 - [G-11] [State variables can be packed into fewer storage slot by reducing their size (saves ~8000 Gas)](#g-11-state-variables-can-be-packed-into-fewer-storage-slot-by-reducing-their-size-saves-8000-gas)
 - [G-12] [Use directly `msg.sender` instead of reading address from `storage` if both are equal (Saves: ~900 Gas)](#g-12-use-directly-msgsender-instead-of-reading-address-from-storage-if-both-are-equal-saves-900-gas)
 - [G-13] [Switch the order of if statements to save gas](#g-13-switch-the-order-of-if-statements-to-save-gas)
@@ -193,12 +193,12 @@ File : WiseLendingDeclaration.sol
 
 ## [G-04] Re-arrange state variable order to save storage slots (Saves ~2000 Gas)
 
-### We can re-arrange the order of `powerFarmCheck` to save 1 storage slot (~2000 Gas)
+### We can re-arrange the order of `powerFarmCheck` to save 1 storage slot (~2000 Gas) pack with address `AAVE_HUB_ADDRESS`
 
 ```solidity
 File : WiseLendingDeclaration.sol
 
-162: address internal AAVE_HUB_ADDRESS;
+162: address internal AAVE_HUB_ADDRESS ;
 ...
 186:  bool internal powerFarmCheck;
 
@@ -221,8 +221,6 @@ File : WiseLendingDeclaration.sol
 ## [G-05] State variables can be packed by truncating timestamp(Instance Missed by bot)(Gas Saved ~4000 GAS)
 
 The EVM works with 32 byte words. Variables less than 32 bytes can be declared next to each other in storage and this will pack the values together into a single 32 byte storage slot (if values combined are <= 32 bytes). If the variables packed together are retrieved together in functions (more likely with structs), we will effectively save ~2000 gas with every subsequent SLOAD for that storage slot. This is due to us incurring a Gwarmaccess (100 gas) versus a Gcoldsload (2100 gas).
-
-**NOTE:-------------------**
 
 ### `lastUpdateGlobal` and `address master` can be packed in a single slot `SAVES: ~2000 Gas, 1 SLOT`
 
@@ -613,7 +611,7 @@ File : DerivativeOracles/PtOraclePure.sol
 108: }
 ```
 
-## [G-10] Use above assigned to state variable values directly instead of reading them from storage saves SLOADs
+## [G-10] Use above assigned to state variable values directly instead of reading them from storage saves 2 SLOADs
 
 ```solidity
 File : FeeManager/DeclarationsFeeManager.sol
@@ -646,8 +644,6 @@ File : FeeManager/DeclarationsFeeManager.sol
 ## [G-11] State variables can be packed into fewer storage slot by reducing their size (saves ~8000 Gas)
 
 The EVM works with 32 byte words. Variables less than 32 bytes can be declared next to each other in storage and this will pack the values together into a single 32 byte storage slot (if values combined are <= 32 bytes). If the variables packed together are retrieved together in functions (more likely with structs), we will effectively save ~2000 gas with every subsequent SLOAD for that storage slot. This is due to us incurring a Gwarmaccess (100 gas) versus a Gcoldsload (2100 gas).
-
-**NOTE:-----------------**
 
 ### `SAVE: ~8000 GAS, 4 SLOT`
 
