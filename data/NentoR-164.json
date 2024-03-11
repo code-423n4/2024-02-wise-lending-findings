@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "NentoR",
+  "risk": "2",
+  "title": "Unsafe casting of Chainlink data feed answers",
+  "issueId": 164,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/164"
+}
