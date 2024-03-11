@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "LinKenji",
+  "risk": "2",
+  "title": "Users may lose assets with drained liquidity, impacting borrowing and withdrawal functionality.",
+  "issueId": 179,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/179"
+}
