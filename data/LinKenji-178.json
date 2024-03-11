@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "LinKenji",
+  "risk": "2",
+  "title": "`_validateAnswer` function inadequate for detecting manipulation attempts.",
+  "issueId": 178,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/178"
+}
