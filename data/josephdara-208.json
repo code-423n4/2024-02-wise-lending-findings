@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "josephdara",
+  "risk": "2",
+  "title": " MAX_COLLATERAL_FACTOR not checked in WiseLending and PendlePowerFarm",
+  "issueId": 208,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/208"
+}
