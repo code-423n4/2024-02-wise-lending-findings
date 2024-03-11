@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "AM",
+  "risk": "2",
+  "title": "PositionNFT can be sold to another user while it has a borrow position",
+  "issueId": 234,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/234"
+}
