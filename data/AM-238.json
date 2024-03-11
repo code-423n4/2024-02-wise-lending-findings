@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "AM",
+  "risk": "3",
+  "title": "Liquidations are not possible when the pool doesn't have enough tokens to payback the liquidator because of a rounding that will make the prices of lending shares to drop if the liquidation is executed.",
+  "issueId": 238,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/238"
+}
