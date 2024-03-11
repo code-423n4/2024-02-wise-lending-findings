@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "linmiaomiao",
+  "risk": "3",
+  "title": "Borrowing aToken rebase rate can compensate for the borrowing interest rate and even generate positive benefits",
+  "issueId": 285,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/285"
+}
