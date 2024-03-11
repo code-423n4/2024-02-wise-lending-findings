@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "seerether",
+  "risk": "3",
+  "title": "Potential risk that a pool may become inactive after the initial check",
+  "issueId": 289,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/289"
+}
