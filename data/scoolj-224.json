@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "scoolj",
+  "risk": "2",
+  "title": "Function Signature Collision (Ambiguity in Function Invocation)",
+  "issueId": 224,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/224"
+}
