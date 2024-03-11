@@ -21,6 +21,8 @@ https://github.com/code-423n4/2024-02-wise-lending/blob/79186b243d8553e66358c054
 
 ![Image Description](https://raw.githubusercontent.com/burhankhaja/PICS/main/syncpool.png)
 
+`please note that even diagramming tool was unable to model all the function calls due to higher complexity`
+
 
 And This complexity gets even worse in other functions. My feedback is refactor codebase to make it more simpler and easier.
 `What would be the benefits of it?`
@@ -147,6 +149,8 @@ Here are the final list of recommendations from my analysis report:
 - Conduct Formal verfication audit with certora
 - Implement governance mechanisms to ensure proper decentralization and avoid single point of failure.
   
+
+
 
 
 
