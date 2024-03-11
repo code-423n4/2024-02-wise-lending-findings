@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xTiwa",
+  "risk": "2",
+  "title": "onERC721Received callback is never called when new tokens are minted. ",
+  "issueId": 203,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/203"
+}
