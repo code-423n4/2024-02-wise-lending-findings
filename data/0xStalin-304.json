@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xStalin",
+  "risk": "2",
+  "title": "Exiting a farm on mainnet assumes a peg of 1:1  when swapping stETH for ETH ",
+  "issueId": 304,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/304"
+}
