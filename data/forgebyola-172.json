@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "forgebyola",
+  "risk": "2",
+  "title": "Initialization of PendlePowerFarmToken can be frontrun leading to DOS.",
+  "issueId": 172,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/172"
+}
