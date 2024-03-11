@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "AM",
+  "risk": "2",
+  "title": "Own implementaion of safeTransfer is not taking into account tokens like USDC that will not revert in case of fail transfer but will return false.",
+  "issueId": 264,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/264"
+}
