@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Draiakoo",
+  "risk": "2",
+  "title": "A position can have a token registered in lending tokens list with 0 amount deposited",
+  "issueId": 235,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/235"
+}
