@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xStalin",
+  "risk": "2",
+  "title": "Withdrawing uncollateralized deposits is possible even though the position is in liquidation mode",
+  "issueId": 260,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/260"
+}
