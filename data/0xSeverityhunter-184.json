@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "0xSeverityhunter",
+  "risk": "2",
+  "title": "setAaveTokensBulk misses one token while setting Token addresses",
+  "issueId": 184,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/184"
+}
