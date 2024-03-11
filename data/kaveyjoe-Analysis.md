@@ -1,6 +1,8 @@
 
 # *Wise Lending Advanced Analysis Report*
 
+
+
 # Wise Lending Advanced Analysis Report
 
 | S.N | Topics                                                            |
@@ -36,7 +38,6 @@
 | 16     | [Learning and Insights](#16-learning-and-insights)                                      |
 | 17     | [Conclusion](#17-conclusion)                                                 |
 | 18     | [Time Spent](#18-time-spent)                                                 |
-
 
 
 
@@ -97,51 +98,53 @@ Here's what makes Wise Lending unique compared to other crypto lending platforms
 
 ## 2. Scope of Contracts
 
-1  . [WiseLending](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLending.sol)
-2  . [WiseSecurity]( https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurity.sol)
-3  . [MainHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/MainHelper.sol)
-4  . [WiseSecurityHelper]( https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurityHelper.sol)
-5  . [PendlePowerFarmToken]( https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmToken.sol)
-6  . [FeeManager](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/FeeManager.sol)
-7  . [PendlePowerFarmLeverageLogic](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerFarmLeverageLogic.sol)
-8  . [OracleHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseOracleHub/OracleHelper.sol)
-9  . [PendlePowerFarmController](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmController.sol)
-10 . [WiseCore](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseCore.sol)
-11 . [WiseLendingDeclaration]( https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLendingDeclaration.sol)
-12 . [WiseOracleHub](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseOracleHub/WiseOracleHub.sol)
-13 . [AaveHub](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/AaveHub.sol)
-14 . [WiseLowLevelHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLowLevelHelper.sol)
-15 . [PendlePowerFarmDeclarations](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerFarmDeclarations.sol)
-16 . [PendlePowerFarmControllerBase](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmControllerBase.sol)
-17 . [AaveHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/AaveHelper.sol)
-18 . [PositionNFTs](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PositionNFTs.sol)
-19 . [WiseSecurityDeclarations](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurityDeclarations.sol)
-20 . [PoolManager](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PoolManager.sol)
-21 . [FeeManagerHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/FeeManagerHelper.sol)
-22 . [PendlePowerFarmMathLogic](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerFarmMathLogic.sol)
-23 . [DeclarationsFeeManager](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/DeclarationsFeeManager.sol)
-24 . [PendlePowerManager](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerManager.sol)
-25 . [PendlePowerFarmControllerHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmControllerHelper.sol)
-26 . [PendlePowerFarm](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerFarm.sol)
-27 . [PowerFarmNFTs](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PowerFarmNFTs/PowerFarmNFTs.sol)
-28 . [MinterReserver](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PowerFarmNFTs/MinterReserver.sol)
-29 . [PendleLpOracle](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PendleLpOracle.sol)
-30 . [Declarations](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseOracleHub/Declarations.sol)
-31 . [PtOracleDerivative](PtOracleDerivativehttps://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PtOracleDerivative.sol)
-32 . [Declarations](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/Declarations.sol)
-33 . [PtOraclePure](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PtOraclePure.sol)
-34 . [OwnableMaster](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/OwnableMaster.sol)
-35 . [PendlePowerFarmTokenFactory](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmTokenFactory.sol)
-36 . [PendleChildLpOracle](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PendleChildLpOracle.sol)
-37 . [FeeManagerEvents](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/FeeManagerEvents.sol)
-38 . [CustomOracleSetup](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/CustomOracleSetup.sol)
-39 . [SendValueHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/SendValueHelper.sol)
-40 . [WrapperHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/WrapperHelper.sol)
-41 . [CallOptionalReturn](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/CallOptionalReturn.sol)
-42 . [TransferHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/TransferHelper.sol)
-43 . [AaveEvents](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/AaveEvents.sol)
-44 . [ApprovalHelper](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/ApprovalHelper.sol)
-
+| File                                                        | SLOC |
+|-------------------------------------------------------------|------|
+| [WiseLending.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLending.sol)                         | 511  |
+| [WiseSecurity.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurity.sol) | 428  |
+| [MainHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/MainHelper.sol)                           | 401  |
+| [WiseSecurityHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurityHelper.sol) | 347  |
+| [PendlePowerFarmToken.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmToken.sol) | 333  |
+| [FeeManager.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/FeeManager.sol)     | 304  |
+| [PendlePowerFarmLeverageLogic.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerFarmLeverageLogic.sol) | 258  |
+| [OracleHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseOracleHub/OracleHelper.sol) | 250  |
+| [PendlePowerFarmController.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmController.sol) | 247  |
+| [WiseCore.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseCore.sol)                               | 242  |
+| [WiseLendingDeclaration.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLendingDeclaration.sol)   | 213  |
+| [WiseOracleHub.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseOracleHub/WiseOracleHub.sol) | 180  |
+| [AaveHub.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/AaveHub.sol)           | 173  |
+| [WiseLowLevelHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseLowLevelHelper.sol)           | 168  |
+| [PendlePowerFarmDeclarations.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerFarmDeclarations.sol) | 160  |
+| [PendlePowerFarmController/PendlePowerFarmControllerBase.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmControllerBase.sol) | 145  |
+| [AaveHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/AaveHelper.sol)     | 144  |
+| [PositionNFTs.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PositionNFTs.sol)                       | 143  |
+| [WiseSecurityDeclarations.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseSecurity/WiseSecurityDeclarations.sol) | 142  |
+| [PoolManager.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PoolManager.sol)                         | 141  |
+| [FeeManagerHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/FeeManagerHelper.sol) | 129  |
+| [PendlePowerFarmMathLogic.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerFarmMathLogic.sol) | 123  |
+| [DeclarationsFeeManager.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/DeclarationsFeeManager.sol) | 117  |
+| [PendlePowerManager.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerManager.sol)         | 103  |
+| [PendlePowerFarmControllerHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmControllerHelper.sol) | 96   |
+| [PendlePowerFarm.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarm/PendlePowerFarm.sol)               | 89   |
+| [PowerFarmNFTs.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PowerFarmNFTs/PowerFarmNFTs.sol)          | 84   |
+| [MinterReserver.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PowerFarmNFTs/MinterReserver.sol)         | 70   |
+| [PendleLpOracle.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PendleLpOracle.sol)                    | 66   |
+| [Declarations.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseOracleHub/Declarations.sol)                           | 66   |
+| [PtOracleDerivative.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PtOracleDerivative.sol)                | 62   |
+| [Declarations.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/Declarations.sol)                              | 56   |
+| [PtOraclePure.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PtOraclePure.sol)                      | 54   |
+| [OwnableMaster.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/OwnableMaster.sol)                     | 52   |
+| [PendlePowerFarmTokenFactory.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmTokenFactory.sol) | 49   |
+| [PendleChildLpOracle.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PendleChildLpOracle.sol)               | 42   |
+| [FeeManagerEvents.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/FeeManagerEvents.sol) | 39   |
+| [CustomOracleSetup.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/CustomOracleSetup.sol)                | 29   |
+| [SendValueHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/SendValueHelper.sol)                         | 17   |
+| [WrapperHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/WrapperHelper.sol)                           | 14   |
+| [CallOptionalReturn.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/CallOptionalReturn.sol)                      | 12   |
+| [TransferHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/TransferHelper.sol)                           | 10   |
+| [AaveEvents.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/AaveEvents.sol)     | 10   |
+| [ApprovalHelper.sol](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/ApprovalHelper.sol)                        | 7    |
+| **SUM:**                                                    | **6326** |
 
 
 
@@ -432,51 +435,51 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 - ### High-Level Overview
 
 
-    +---------------------------------------------+
-    |             Blockchain Network              |
-    +---------------------------------------------+
-               |                     |
-               |                     |
-               v                     v
-    +----------------------+   +------------------------+
-    |    WiseCore Contract |   |  Derivative Oracles    |
-    |        (Logic)       |   |(PendleLpOracle, PtOracle)|
-    +----------------------+   +------------------------+
-               |                     |
-               |                     |
-               v                     v
-    +----------------------+   +------------------------+
-    | Wise Lending Contract|   |         Aave           |
-    |       (Interface)    |   |     (Interest rates)   |
-    +----------------------+   +------------------------+
-               |                     |
-               |                     |
-               v                     v
-    +----------------------+   +------------------------+
-    |   Wise Security      |   |      Position NFTs     |
-    |      (Collateral)    |   | (Represent positions)  |
-    +----------------------+   +------------------------+
-               |                     |
-               |                     |
-               v                     v
-    +----------------------+   +------------------------+
-    |  FeeManager Contract |   |   WiseOracleHub        |
-    |         (Fees)       |   |   (Price oracles)      |
-    +----------------------+   +------------------------+
-               |                     |
-               |                     |
-               v                     v
-    +----------------------+   +------------------------+
-    |  Wise Security       |   |  WrapperHub (AaveHub)  |
-    |  Declaration Contract|   |    (Wrap native tokens)|
-    +----------------------+   +------------------------+
-               |                     |
-               |                     |
-               v                     v
-    +----------------------+   +------------------------+
-    |    PowerFarms        |   |  PowerFarmNFTs (Minter)|
-    |   (Leverage logic)   |   +------------------------+
-    +----------------------+
+        +---------------------------------------------+
+        |             Blockchain Network              |
+        +---------------------------------------------+
+                   |                     |
+                   |                     |
+                   v                     v
+        +----------------------+   +------------------------+
+        |    WiseCore Contract |   |  Derivative Oracles    |
+        |        (Logic)       |   |(PendleLpOracle, PtOracle)|
+        +----------------------+   +------------------------+
+                   |                     |
+                   |                     |
+                   v                     v
+        +----------------------+   +------------------------+
+        | Wise Lending Contract|   |         Aave           |
+        |       (Interface)    |   |     (Interest rates)   |
+        +----------------------+   +------------------------+
+                   |                     |
+                   |                     |
+                   v                     v
+        +----------------------+   +------------------------+
+        |   Wise Security      |   |      Position NFTs     |
+        |      (Collateral)    |   | (Represent positions)  |
+        +----------------------+   +------------------------+
+                   |                     |
+                   |                     |
+                   v                     v
+        +----------------------+   +------------------------+
+        |  FeeManager Contract |   |   WiseOracleHub        |
+        |         (Fees)       |   |   (Price oracles)      |
+        +----------------------+   +------------------------+
+                   |                     |
+                   |                     |
+                   v                     v
+        +----------------------+   +------------------------+
+        |  Wise Security       |   |  WrapperHub (AaveHub)  |
+        |  Declaration Contract|   |    (Wrap native tokens)|
+        +----------------------+   +------------------------+
+                   |                     |
+                   |                     |
+                   v                     v
+        +----------------------+   +------------------------+
+        |    PowerFarms        |   |  PowerFarmNFTs (Minter)|
+        |   (Leverage logic)   |   +------------------------+
+        +----------------------+
 
 
 
@@ -484,70 +487,70 @@ ApprovalHelper is a contract that provides functionalities for approving the tra
 
 - ### User Interaction with Wise Lending
 
-    +-----------------+                                    +------------------+
-    |    User         |<---------------------------------->| Wise Lending     |
-    +-----------------+                                    +------------------+
-               ^                                                        ^
-               |                                                        |
-               |   Initialize Contract                                  |
-               | --------------------------------->                     |
-               |                                                        |
-               |  1. connect to Wallet                                  |
-               |  2. approve tokens                                     |
-               |                                                        |
-               |                                                        |
-               v                                                        |
-    +-----------------+                                    +------------------+
-    |    User         |<---------------------------------->| Wise Security    |
-    +-----------------+                                    +------------------+
-               ^                                                        ^
-               |                                                        |
-               |   User Interact    <------------------->    Contract   |
-               |   with powerFarm   |                      |            |
-               |   contracts        |                      |            |
-               | ------------------->                      |            |
-               |                                                        |
-               |                                                        |
-               v                                                        |
-    +------------------------------------------------------+         +------------------+
-    |               PowerFarmNFTs & PendlePowerFarm        |<------->|   MainHelper    |
-    +------------------------------------------------------+         +------------------+
-               |                                                        ^
-               |                                                        |
-               |   User Interact    <------------------->    Contract   |
-               |   with WiseLending   |                      |          |
-               |   contracts          |                      |          |
-               | ------------------->                        |          |
-               |                                                        |
-               |                                                        |
-               v                                                        |
-    +------------------------------------------------------------------+         +------------------+
-    |                           WiseLending                           |<-------> | FeeManager       |
-    +------------------------------------------------------------------+         +------------------+
-               ^                                                        ^
-               |                                                        |
-               |   User Interact    <------------------->    Contract   |
-               |   with WiseSecurity|                      |            |
-               |   contracts        |                      |            |
-               | ------------------->                      |            |
-               |                                                        |
-               |                                                        |
-               v                                                        |
-    +------------------------------------------------------------------+         +------------------+
-    |               WiseOracleHub & DerivativeOracles                  |<------->| WiseSecurity     |
-    +------------------------------------------------------------------+         +------------------+
-               ^                                                        ^
-               |                                                        |
-               |          User Interact                                 |
-               |          with Oracle                                   |
-               |          Contracts                                     |
-               | ------------------->                                   |
-               |                                                        |
-               |                                                        |
-               v                                                        |
-    +------------------------------------------------------------------+         +------------------+
-    |                        WrapperHub & Aave                        |<------->|  PoolManager    |
-    +------------------------------------------------------------------+         +------------------+
+        +-----------------+                                    +------------------+
+        |    User         |<---------------------------------->| Wise Lending     |
+        +-----------------+                                    +------------------+
+                   ^                                                        ^
+                   |                                                        |
+                   |   Initialize Contract                                  |
+                   | --------------------------------->                     |
+                   |                                                        |
+                   |  1. connect to Wallet                                  |
+                   |  2. approve tokens                                     |
+                   |                                                        |
+                   |                                                        |
+                   v                                                        |
+        +-----------------+                                    +------------------+
+        |    User         |<---------------------------------->| Wise Security    |
+        +-----------------+                                    +------------------+
+                   ^                                                        ^
+                   |                                                        |
+                   |   User Interact    <------------------->    Contract   |
+                   |   with powerFarm   |                      |            |
+                   |   contracts        |                      |            |
+                   | ------------------->                      |            |
+                   |                                                        |
+                   |                                                        |
+                   v                                                        |
+        +------------------------------------------------------+         +------------------+
+        |               PowerFarmNFTs & PendlePowerFarm        |<------->|   MainHelper    |
+        +------------------------------------------------------+         +------------------+
+                   |                                                        ^
+                   |                                                        |
+                   |   User Interact    <------------------->    Contract   |
+                   |   with WiseLending   |                      |          |
+                   |   contracts          |                      |          |
+                   | ------------------->                        |          |
+                   |                                                        |
+                   |                                                        |
+                   v                                                        |
+        +------------------------------------------------------------------+         +------------------+
+        |                           WiseLending                           |<-------> | FeeManager       |
+        +------------------------------------------------------------------+         +------------------+
+                   ^                                                        ^
+                   |                                                        |
+                   |   User Interact    <------------------->    Contract   |
+                   |   with WiseSecurity|                      |            |
+                   |   contracts        |                      |            |
+                   | ------------------->                      |            |
+                   |                                                        |
+                   |                                                        |
+                   v                                                        |
+        +------------------------------------------------------------------+         +------------------+
+        |               WiseOracleHub & DerivativeOracles                  |<------->| WiseSecurity     |
+        +------------------------------------------------------------------+         +------------------+
+                   ^                                                        ^
+                   |                                                        |
+                   |          User Interact                                 |
+                   |          with Oracle                                   |
+                   |          Contracts                                     |
+                   | ------------------->                                   |
+                   |                                                        |
+                   |                                                        |
+                   v                                                        |
+        +------------------------------------------------------------------+         +------------------+
+        |                        WrapperHub & Aave                        |<------->|  PoolManager    |
+        +------------------------------------------------------------------+         +------------------+
 
 ## 5. Contract Functionality Overview [Table]
 | Contract Name              | Function Name        | State-Changing | Arguments                                                            | Returns             | Ideal or Actual |
@@ -986,6 +989,8 @@ Total Time Spent - 54 Hours
 | Performing High-Level Code Review                 | 20 hours   |
 | Analyzing Security and Correctness Properties     | 12 hours   |
 | Writing Report and Presentation                   | 8 hours    |
+
+
 
 
 
