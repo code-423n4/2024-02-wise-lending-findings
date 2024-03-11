@@ -30,23 +30,22 @@ no | File |
 | [[File-26](#file-26)] | PendlePowerFarm.sol | 
 | [[File-27](#file-27)] | PowerFarmNFTs.sol | 
 | [[File-28](#file-28)] | MinterReserver.sol | 
-| [[File-29](#file-29)] | MinterReserver.sol | 
-| [[File-30](#file-30)] | PendleLpOracle.sol | 
-| [[File-31](#file-31)] | Declarations.sol | 
-| [[File-32](#file-32)] | PtOracleDerivative.sol | 
-| [[File-33](#file-33)] | Declarations.sol | 
-| [[File-34](#file-34)] | PtOraclePure.sol | 
-| [[File-35](#file-35)] | OwnableMaster.sol | 
-| [[File-36](#file-36)] | PendlePowerFarmTokenFactory.sol | 
-| [[File-37](#file-37)] | PendleChildLpOracle.sol | 
-| [[File-38](#file-38)] | FeeManagerEvents.sol | 
-| [[File-39](#file-39)] | CustomOracleSetup.sol | 
-| [[File-40](#file-40)] | SendValueHelper.sol | 
-| [[File-41](#file-41)] | WrapperHelper.sol | 
-| [[File-42](#file-42)] | CallOptionalReturn.sol | 
-| [[File-43](#file-43)] | TransferHelper.sol | 
-| [[File-44](#file-44)] | AaveEvents.sol | 
-| [[File-45](#file-45)] | ApprovalHelper.sol | 
+| [[File-29](#file-29)] | PendleLpOracle.sol | 
+| [[File-30](#file-30)] | Declarations.sol | 
+| [[File-31](#file-31)] | PtOracleDerivative.sol | 
+| [[File-32](#file-32)] | Declarations.sol | 
+| [[File-33](#file-33)] | PtOraclePure.sol | 
+| [[File-34](#file-34)] | OwnableMaster.sol | 
+| [[File-35](#file-35)] | PendlePowerFarmTokenFactory.sol | 
+| [[File-36](#file-36)] | PendleChildLpOracle.sol | 
+| [[File-37](#file-37)] | FeeManagerEvents.sol | 
+| [[File-38](#file-38)] | CustomOracleSetup.sol | 
+| [[File-39](#file-39)] | SendValueHelper.sol | 
+| [[File-40](#file-40)] | WrapperHelper.sol | 
+| [[File-41](#file-41)] | CallOptionalReturn.sol | 
+| [[File-42](#file-42)] | TransferHelper.sol | 
+| [[File-43](#file-43)] | AaveEvents.sol | 
+| [[File-44](#file-44)] | ApprovalHelper.sol | 
 
 
 ## Analysis Issue Report 
@@ -1271,51 +1270,7 @@ To mitigate these risks, thorough testing, code reviews, and potentially third-p
 
 
 
-### [File-29] MinterReserver.sol
-
-#### The bellow issues related to the File ( Link )
-[Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PowerFarmNFTs/MinterReserver.sol)
-
-<details>
-<summary>see instances</summary>
-
-
-
-#### Admin Abuse Risks:
-
-* The `onlyKeyOwner` modifier and the `isOwner` function help protect against unauthorized access to certain functions. However, the reliance on external contracts, especially the `FARMS_NFTS` contract, introduces potential admin abuse risks. If the external contract is compromised or its ownership changes unexpectedly, it could lead to unauthorized actions.
-
-
-
-#### Systemic Risks:
-
-* The contract interacts with an external contract (`FARMS_NFTS`), and its proper functioning relies on the correct behavior of this external contract. Any changes in the external contract's interfaces or behaviors may introduce systemic risks. It's crucial to ensure proper coordination and communication between the two contracts.
-
-
-#### Technical Risks:
-
-* The use of state variables such as `totalMinted`, `totalReserved`, and mappings could introduce potential technical risks if not managed correctly. Ensure that incrementing and decrementing these counters are handled properly to avoid unexpected behavior.
-
-
-#### Integration Risks:
-
-* The contract relies on the functionality of the `FARMS_NFTS` contract. Any changes in the external contract's behavior or interfaces may lead to integration risks. Regular monitoring and testing are essential to address potential issues arising from changes in external contracts.
-
-
-#### Non-Standard Token Risks:
-
-* The contract interacts with an ERC-721 token (`FARMS_NFTS`). It assumes standard behavior and interfaces for ERC-721 tokens. If the external contract deviates from these standards, it may introduce non-standard token risks.
-
-
-#### Suggestions:
-
-Closely monitor and stay informed about any changes in the external contract (`FARMS_NFTS`) to ensure continued compatibility and security. Documenting and communicating potential risks to users and developers is crucial for maintaining the integrity of the system.
-
-</details>
-
-
-
-### [File-30] PendleLpOracle.sol
+### [File-29] PendleLpOracle.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PendleLpOracle.sol)
@@ -1354,7 +1309,7 @@ Closely monitor and stay informed about any changes in the external contract (`F
 
 
 
-### [File-31] Declarations.sol
+### [File-30] Declarations.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WiseOracleHub/Declarations.sol)
@@ -1399,7 +1354,7 @@ Careful consideration of the external dependencies and their potential impact on
 
 
 
-### [File-32] PtOracleDerivative.sol
+### [File-31] PtOracleDerivative.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PtOracleDerivative.sol)
@@ -1439,7 +1394,7 @@ Careful consideration of the external dependencies and their potential impact on
 
 
 
-### [File-33] Declarations.sol
+### [File-32] Declarations.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/Declarations.sol)
@@ -1482,7 +1437,7 @@ The owner's powers should be carefully defined and limited to necessary function
 
 
 
-### [File-34] PtOraclePure.sol
+### [File-33] PtOraclePure.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PtOraclePure.sol)
@@ -1522,7 +1477,7 @@ The owner's powers should be carefully defined and limited to necessary function
 
 
 
-### [File-35] OwnableMaster.sol
+### [File-34] OwnableMaster.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/OwnableMaster.sol)
@@ -1562,7 +1517,7 @@ The owner's powers should be carefully defined and limited to necessary function
 
 
 
-### [File-36] PendlePowerFarmTokenFactory.so
+### [File-35] PendlePowerFarmTokenFactory.so
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/PowerFarms/PendlePowerFarmController/PendlePowerFarmTokenFactory.sol)
@@ -1605,7 +1560,7 @@ Careful consideration should be given to the management of the `PENDLE_POWER_FAR
 
 
 
-### [File-37] PendleChildLpOracle.sol
+### [File-36] PendleChildLpOracle.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/PendleChildLpOracle.sol)
@@ -1649,7 +1604,7 @@ Careful consideration should be given to the initialization of external contract
 
 
 
-### [File-38] FeeManagerEvents.sol
+### [File-37] FeeManagerEvents.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/FeeManager/FeeManagerEvents.sol)
@@ -1693,7 +1648,7 @@ In summary, while the `FeeManagerEvents` contract itself does not pose significa
 
 
 
-### [File-39] CustomOracleSetup.sol
+### [File-38] CustomOracleSetup.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/DerivativeOracles/CustomOracleSetup.sol)
@@ -1754,7 +1709,7 @@ In summary, while the `FeeManagerEvents` contract itself does not pose significa
 
 
 
-### [File-40] SendValueHelper.sol
+### [File-39] SendValueHelper.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/SendValueHelper.sol)
@@ -1811,7 +1766,7 @@ In summary, while the `FeeManagerEvents` contract itself does not pose significa
 
 
 
-### [File-41] WrapperHelper.sol
+### [File-40] WrapperHelper.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/WrapperHelper.sol)
@@ -1863,7 +1818,7 @@ In summary, while the `FeeManagerEvents` contract itself does not pose significa
 
 </details>
 
-### [File-42] CallOptionalReturn.sol
+### [File-41] CallOptionalReturn.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/CallOptionalReturn.sol)
@@ -1915,7 +1870,7 @@ In summary, while the `FeeManagerEvents` contract itself does not pose significa
 
 
 
-### [File-43] TransferHelper.sol
+### [File-42] TransferHelper.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/TransferHelper.sol)
@@ -1966,7 +1921,7 @@ In summary, while the `FeeManagerEvents` contract itself does not pose significa
 
 
 
-### [File-44] AaveEvents.sol
+### [File-43] AaveEvents.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/WrapperHub/AaveEvents.sol)
@@ -2017,7 +1972,7 @@ In summary, while the `FeeManagerEvents` contract itself does not pose significa
 
 
 
-### [File-45] ApprovalHelper.sol
+### [File-44] ApprovalHelper.sol
 
 #### The bellow issues related to the File ( Link )
 [Github-Link](https://github.com/code-423n4/2024-02-wise-lending/blob/main/contracts/TransferHub/ApprovalHelper.sol)
@@ -2066,6 +2021,8 @@ In summary, while the `FeeManagerEvents` contract itself does not pose significa
 **Token Standards**: Confirm that the tokens involved follow the ERC-20 standard, as this contract assumes standard token behavior.
 
 </details>
+
+
 
 
 ### Time spent:
