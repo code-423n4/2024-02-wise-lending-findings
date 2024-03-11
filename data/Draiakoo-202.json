@@ -1,0 +1,8 @@
+{
+  "contest": 330,
+  "handle": "Draiakoo",
+  "risk": "3",
+  "title": "Liquidating chaining can be achieved by liquidating token collateral with the highest `collateralFactor`",
+  "issueId": 202,
+  "issueUrl": "https://github.com/code-423n4/2024-02-wise-lending-findings/issues/202"
+}
